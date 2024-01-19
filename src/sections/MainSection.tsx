@@ -1,6 +1,8 @@
 import React, {FC, useEffect, useState} from 'react';
 import {CodeFragment} from "../components/CodeFragment";
-import styled from "styled-components";
+import Tilt from 'react-parallax-tilt';
+import styled, {keyframes} from "styled-components";
+import {SolarSystem} from "../components/SolarSystem";
 
 const texts = ["Шёь Ефкфы Яму", "I’m Taras Zverev"];
 
@@ -33,8 +35,6 @@ export const MainSection: FC = () => {
             return () => clearTimeout(timeout);
         }
     }, [displayedText, texts, currentTextIndex, currentIndex]);
-
-
     return (
         <Wrapper>
             <Info>
@@ -44,8 +44,10 @@ export const MainSection: FC = () => {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, volutpat feugiat placerat lobortis.
                     Natoque rutrum semper sed suspendisse nunc lectus.
                 </p>
+                <SolarSystem/>
             </Info>
             <CodeFragment myName={displayedText}/>
+
         </Wrapper>
     );
 };
@@ -56,6 +58,14 @@ const Wrapper = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  gap: 20px;
+ 
+  @media screen and (max-width: 1180px) {
+    flex-direction: column;
+    justify-content: center;
+    gap: 70px;
+  }
 
   img {
     width: 525px;
@@ -64,16 +74,18 @@ const Wrapper = styled.section`
     border-radius: 8px;
     opacity: .7;
   }
-
-  border: 1px solid green;
 `;
 
 const Info = styled.div`
+  z-index: 2;
+  position: relative;
+
   span {
     display: inline-block;
     height: 48px;
     font-size: 48px;
     font-weight: 700;
+
   }
 
   h1 {
@@ -91,3 +103,11 @@ const Info = styled.div`
     color: ${({theme}) => theme.colors.textSecondaryColor};
   }
 `;
+
+
+
+
+
+
+
+

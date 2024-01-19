@@ -43,14 +43,13 @@ export const CodeFragment: FC<IProps> = ({myName}) => {
             </pre>
             </Wrapper>
         </LaptopImitation>
+
     );
 };
 
 const Wrapper = styled.div`
   background-color: ${({theme}) => theme.colors.backgroundSecondary};
   padding: 15px;
-
-
 `;
 
 interface ISpan {

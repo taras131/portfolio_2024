@@ -30,18 +30,11 @@ const NavWrapper = styled.nav`
     align-items: start;
     gap: 50px;
   }
-
-  li {
-
-  }
-
-
 `;
 
 interface INavItem {
     isActive: boolean
 }
-
 
 const itemAnimation = keyframes`
   0% {
@@ -52,8 +45,6 @@ const itemAnimation = keyframes`
   75% {
     width: 120%;
     opacity: 1;
-
-
   }
   100% {
     width: 100%;
