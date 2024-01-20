@@ -6,7 +6,6 @@ export const Navigation = () => {
     const handleNavItemClick = (activeItem: string) => () => {
         setActiveNavItem(activeItem)
     }
-
     return (
         <NavWrapper>
             <ul>
@@ -29,7 +28,11 @@ const NavWrapper = styled.nav`
     display: flex;
     align-items: start;
     gap: 50px;
+    @media screen and (max-width: 768px) {
+      gap: 20px;
+    }
   }
+
 `;
 
 interface INavItem {

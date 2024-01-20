@@ -6,6 +6,8 @@ interface IProps {
     myName: string;
 }
 
+const lorem = " Lorem ipsum dolor sit amet,  consectetur adipiscing elit. Et, volutpat feugiat placerat lobortis. Natoque rutrum semper  sed suspendisse nunc lectus.";
+
 export const CodeFragment: FC<IProps> = ({myName}) => {
     const [cursorVisible, setCursorVisible] = useState(true);
     useEffect(() => {
@@ -30,9 +32,7 @@ export const CodeFragment: FC<IProps> = ({myName}) => {
                 <CodeLine teg={"span"} tab={4}>{myName}{cursorVisible && (<span>|</span>)}</CodeLine>
                 <CodeLine teg={"h1"} tab={4}>Frontend developer</CodeLine>
                 <CodeLine teg={"p"} tab={4}>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
-                    Et, volutpat feugiat placerat lobortis.<br/>
-                    Natoque rutrum semper sed suspendisse nunc lectus.
+                    {lorem}
                 </CodeLine>
                 <CodeLine teg={"Info"} close tab={3}/>
                 <CodeLine teg={"CodeFragment"} tab={3}/>
@@ -50,6 +50,10 @@ export const CodeFragment: FC<IProps> = ({myName}) => {
 const Wrapper = styled.div`
   background-color: ${({theme}) => theme.colors.backgroundSecondary};
   padding: 15px;
+  z-index: 100;
+  max-width: 400px;
+  width: 100%;
+  overflow: hidden;
 `;
 
 interface ISpan {
@@ -106,6 +110,7 @@ const LineBody = styled.span`
   color: #BABABA;
 
   span {
+    
     position: absolute;
     color: ${({theme}) => theme.colors.textPrimary};
   }

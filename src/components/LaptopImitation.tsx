@@ -34,6 +34,7 @@ const Wrapper = styled.div`
   border-radius: 8px;
   border: 20px solid #252323FF;
   position: relative;
+  
 `;
 
 const Camera = styled.div`
@@ -86,7 +87,7 @@ const Indications = styled.ul`
   display: flex;
   align-items: center;
   gap: 10px;
-
+z-index: 100;
   li {
     height: 5px;
     width: 5px;
