@@ -52,14 +52,22 @@ export const MainSection: FC = () => {
 
 const Wrapper = styled.section`
   min-height: 500px;
-  padding: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
+<<<<<<< HEAD
   gap: 5px;
   
   @media screen and (max-width: 1070px) {
+=======
+  gap: 20px;
+
+  @media screen and (max-width: 1180px) {
+    padding-top: 70px;
+>>>>>>> ca06c0d1fb32e13be5bd1fb248570152de56d184
     flex-direction: column;
     justify-content: center;
     gap: 70px;

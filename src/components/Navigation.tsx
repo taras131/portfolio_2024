@@ -6,7 +6,6 @@ export const Navigation = () => {
     const handleNavItemClick = (activeItem: string) => () => {
         setActiveNavItem(activeItem)
     }
-
     return (
         <NavWrapper>
             <ul>
@@ -33,6 +32,7 @@ const NavWrapper = styled.nav`
       gap: 20px;
     }
   }
+
 `;
 
 interface INavItem {

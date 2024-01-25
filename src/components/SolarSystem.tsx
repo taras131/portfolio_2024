@@ -13,6 +13,7 @@ export const SolarSystem = () => {
 };
 
 const Wrapper = styled.div`
+<<<<<<< HEAD
 position: absolute;
   top: 50%;
   left: 50%;
@@ -20,6 +21,14 @@ position: absolute;
   opacity: 0.6;
   border: 1px solid red;
   
+=======
+  position: absolute;
+  z-index: -1;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+>>>>>>> ca06c0d1fb32e13be5bd1fb248570152de56d184
 `;
 
 const orbit_0 = keyframes`
@@ -113,7 +122,7 @@ const Comet = styled.div`
   position: absolute;
   top: -500px;
   left: 500px;
-  animation: ${moveComet} 6s linear  20s; /* Анимация движения кометы по орбите */
+  animation: ${moveComet} 6s linear 20s; /* Анимация движения кометы по орбите */
 
 `;
 
