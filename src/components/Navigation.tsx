@@ -29,6 +29,9 @@ const NavWrapper = styled.nav`
     display: flex;
     align-items: start;
     gap: 50px;
+    @media screen and (max-width: 768px) {
+      gap: 20px;
+    }
   }
 `;
 

@@ -1,8 +1,8 @@
 import React, {FC, useEffect, useState} from 'react';
 import {CodeFragment} from "../components/CodeFragment";
-import Tilt from 'react-parallax-tilt';
-import styled, {keyframes} from "styled-components";
+import styled from "styled-components";
 import {SolarSystem} from "../components/SolarSystem";
+import {mainSectionDescriptionText} from "../utils/consts";
 
 const texts = ["Шёь Ефкфы Яму", "I’m Taras Zverev"];
 
@@ -41,13 +41,11 @@ export const MainSection: FC = () => {
                 <span>{displayedText}</span>
                 <h1><span>Frontend</span> developer</h1>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, volutpat feugiat placerat lobortis.
-                    Natoque rutrum semper sed suspendisse nunc lectus.
+                    {mainSectionDescriptionText}
                 </p>
-                <SolarSystem/>
+             <SolarSystem/>
             </Info>
             <CodeFragment myName={displayedText}/>
-
         </Wrapper>
     );
 };
@@ -59,9 +57,9 @@ const Wrapper = styled.section`
   align-items: center;
   justify-content: space-between;
   position: relative;
-  gap: 20px;
- 
-  @media screen and (max-width: 1180px) {
+  gap: 5px;
+  
+  @media screen and (max-width: 1070px) {
     flex-direction: column;
     justify-content: center;
     gap: 70px;

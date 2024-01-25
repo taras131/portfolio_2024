@@ -14,11 +14,12 @@ export const SolarSystem = () => {
 
 const Wrapper = styled.div`
 position: absolute;
-  height: 100%;
-  width: 100%;
   top: 50%;
   left: 50%;
   z-index: -1;
+  opacity: 0.6;
+  border: 1px solid red;
+  
 `;
 
 const orbit_0 = keyframes`

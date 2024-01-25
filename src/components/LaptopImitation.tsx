@@ -10,10 +10,10 @@ interface IProps {
 export const LaptopImitation: FC<IProps> = ({children}) => {
     return (
         <Tilt  className="parallax-effect-glare-scale"
-               perspective={500}
+               perspective={2000}
                glareEnable={true}
-               glareMaxOpacity={0.45}
-               scale={1.02}
+               glareMaxOpacity={1}
+               scale={1.01}
         >
             <Wrapper>
                 {children}
