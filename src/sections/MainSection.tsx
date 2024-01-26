@@ -43,7 +43,7 @@ export const MainSection: FC = () => {
                 <p>
                     {mainSectionDescriptionText}
                 </p>
-             <SolarSystem/>
+                <SolarSystem/>
             </Info>
             <CodeFragment myName={displayedText}/>
         </Wrapper>
@@ -58,28 +58,13 @@ const Wrapper = styled.section`
   align-items: center;
   justify-content: space-between;
   position: relative;
-<<<<<<< HEAD
   gap: 5px;
-  
-  @media screen and (max-width: 1070px) {
-=======
-  gap: 20px;
 
-  @media screen and (max-width: 1180px) {
+  @media screen and (max-width: 1070px) {
+    gap: 20px;
     padding-top: 70px;
->>>>>>> ca06c0d1fb32e13be5bd1fb248570152de56d184
     flex-direction: column;
     justify-content: center;
-    gap: 70px;
-  }
-
-  img {
-    width: 525px;
-    height: 457px;
-    object-fit: cover;
-    border-radius: 8px;
-    opacity: .7;
-  }
 `;
 
 const Info = styled.div`

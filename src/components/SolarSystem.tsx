@@ -13,22 +13,11 @@ export const SolarSystem = () => {
 };
 
 const Wrapper = styled.div`
-<<<<<<< HEAD
-position: absolute;
+  position: absolute;
   top: 50%;
   left: 50%;
   z-index: -1;
   opacity: 0.6;
-  border: 1px solid red;
-  
-=======
-  position: absolute;
-  z-index: -1;
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
->>>>>>> ca06c0d1fb32e13be5bd1fb248570152de56d184
 `;
 
 const orbit_0 = keyframes`
