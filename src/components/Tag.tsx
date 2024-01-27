@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styled from "styled-components";
 
 interface IProps {
-    name: "div" | "span" | "h1" | "p" | "Wrapper" | "Info" | "CodeFragment"
+    name: string
     type?: "open" | "close" | "single"
     tabCount?: number
     isNewLine?: boolean

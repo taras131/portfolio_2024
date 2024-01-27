@@ -35,7 +35,6 @@ const Wrapper = styled.li`
   background-color: ${({theme}) => theme.colors.backgroundSecondary};
   text-align: center;
   position: relative;
-  z-index: 10;
 
   &::before, &::after {
     content: '';
@@ -44,7 +43,6 @@ const Wrapper = styled.li`
     height: 30px;
     background-color: white;
     transition: width 0.3s, height 0.3s;
-    z-index: -1; /* Установка z-index для псевдоэлементов */
   }
 
   &::before {

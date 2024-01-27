@@ -3,7 +3,7 @@ import {Tag} from "./Tag";
 import styled from "styled-components";
 
 interface ICodeLine {
-    tag: "div" | "span" | "h1" | "p" | "Wrapper" | "Info" | "CodeFragment"
+    tag: string
     children: React.ReactNode
     tab: number
 }

@@ -15,7 +15,7 @@ export const CodeFragmentLinesNumbers = () => {
 };
 
 const Wrapper = styled.div`
-  flex: 1;
+  
   background-color: #3F3D3DFF;
   width: 25px;
   padding-left: 3px;

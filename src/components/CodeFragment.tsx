@@ -5,48 +5,49 @@ import {Tag} from "./Tag";
 import {CodeLine} from "./CodeLine";
 import {CodeFragmentHeader} from "./CodeFragmentHeader";
 import {CodeFragmentLinesNumbers} from "./CodeFragmentLinesNumbers";
+import {fileNames} from "../utils/consts";
+import {CodeFragmentFunction} from "./CodeFragmentFunction";
+import CodeFragmentFileMainSection from "./CodeFragmentFileMainSection";
+import {CodeFragmentFileCodeFragment} from "./CodeFragmentFileCodeFragment";
+import {CodeFragmentFileSolarSystem} from "./CodeFragmentFileSolarSystem";
+import {CodeFragmentFileCodeLine} from "./CodeFragmentFileCodeLine";
 
 interface IProps {
     myName: string;
 }
 
-const lorem = " Lorem ipsum dolor sit amet,  consectetur adipiscing elit. Et, volutpat feugiat placerat lobortis. Natoque rutrum semper  sed suspendisse nunc lectus.";
-
 export const CodeFragment: FC<IProps> = ({myName}) => {
-    const [cursorVisible, setCursorVisible] = useState(true);
+    const [activeFile, setActiveFile] = useState(fileNames[0]);
+    const [visibleCode, setVisibleCode] = useState(<CodeFragmentFileMainSection myName={myName}/>);
+    const changeActiveFile = (fileName: string) => () => {
+        if (activeFile !== fileName) {
+            setActiveFile(fileName)
+        }
+    }
     useEffect(() => {
-        const interval = setInterval(() => {
-            setCursorVisible(prev => !prev);
-        }, 600);
-
-        return () => clearInterval(interval);
-    }, []);
+        switch (activeFile) {
+            case fileNames[1]:
+                setVisibleCode(<CodeFragmentFileCodeFragment/>);
+                break;
+            case fileNames[2]:
+                setVisibleCode(<CodeFragmentFileSolarSystem/>);
+                break;
+            case fileNames[3]:
+                setVisibleCode(<CodeFragmentFileCodeLine />);
+                break;
+            default:
+                setVisibleCode(<CodeFragmentFileMainSection myName={myName}/>);
+        }
+    }, [activeFile]);
     return (
         <LaptopImitation>
             <Wrapper>
-                <CodeFragmentHeader/>
+                <CodeFragmentHeader activeFile={activeFile} changeActiveFile={changeActiveFile}/>
                 <Code>
                     <CodeFragmentLinesNumbers/>
                     <pre>
-                            <OrangeSpan tab={0}>export const </OrangeSpan>
-                            <YellowSpan tab={0}>MainSection</YellowSpan>
-                            <span>:FC = () =&gt; &#123;</span>
-                            <br/>
-                            <OrangeSpan tab={1}>return </OrangeSpan>
-                            <span>(</span>
-                            <Tag name={"Wrapper"} tabCount={2} isNewLine/>
-                                <Tag name={"Info"} tabCount={3} isNewLine/>
-                                    <CodeLine tag={"span"} tab={4}>{myName}{cursorVisible && (
-                                        <span>|</span>)}</CodeLine>
-                                    <CodeLine tag={"h1"} tab={4}>Frontend developer</CodeLine>
-                                    <CodeLine tag={"p"} tab={4}>&#123;mainSectionDescriptionText&#125;</CodeLine>
-                                <Tag name={"Info"} type={"close"} tabCount={3} isNewLine/>
-                                <Tag name={"CodeFragment"} type={"single"} tabCount={3} isNewLine/>
-                            <Tag name={"Wrapper"} type={"close"} tabCount={2} isNewLine/>
-                            <span style={{marginLeft: "20px"}}>);</span>
-                            <br/>
-                            <span>&#125;;</span>
-                      </pre>
+                      {visibleCode}
+                    </pre>
                 </Code>
             </Wrapper>
         </LaptopImitation>
@@ -55,36 +56,30 @@ export const CodeFragment: FC<IProps> = ({myName}) => {
 };
 
 const Wrapper = styled.div`
-  background-color: ${({theme}) => theme.colors.backgroundSecondary};
-  color: #BABABA;
+    background-color: ${({theme}) => theme.colors.backgroundSecondary};
+    color: #BABABA;
 `;
 
 const Code = styled.div`
-  display: flex;
-  align-items: stretch;
-  height: 100%;
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+    min-width: 440px;
+    width: 100%;
+    min-height: 225px;
+ 
 
-  pre {
-    padding: 15px 35px;
-    @media screen and (max-width: 536px) {
-      padding: 5px;
+    pre {
+        padding: 15px 35px;
+        @media screen and (max-width: 536px) {
+            padding: 5px;
+        }
     }
-  }
 `;
 
-interface ISpan {
-    tab: number
-}
 
-const OrangeSpan = styled.span<ISpan>`
-  margin-left: ${props => props.tab * 20 + "px"};
-  color: #cc7832;
-`;
 
-const YellowSpan = styled.span<ISpan>`
-  margin-left: ${props => props.tab * 20 + "px"};
-  color: #FFC66A
-`;
+
 
 
 
