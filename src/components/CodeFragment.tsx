@@ -33,12 +33,12 @@ export const CodeFragment: FC<IProps> = ({myName}) => {
                 setVisibleCode(<CodeFragmentFileSolarSystem/>);
                 break;
             case fileNames[3]:
-                setVisibleCode(<CodeFragmentFileCodeLine />);
+                setVisibleCode(<CodeFragmentFileCodeLine/>);
                 break;
             default:
                 setVisibleCode(<CodeFragmentFileMainSection myName={myName}/>);
         }
-    }, [activeFile]);
+    }, [activeFile, myName]);
     return (
         <LaptopImitation>
             <Wrapper>
@@ -63,17 +63,27 @@ const Wrapper = styled.div`
 const Code = styled.div`
     display: flex;
     align-items: stretch;
-    height: 100%;
-    min-width: 440px;
-    width: 100%;
-    min-height: 225px;
- 
+    width: 440px;
+    height: 225px;
 
     pre {
         padding: 15px 35px;
-        @media screen and (max-width: 536px) {
+        @media screen and (max-width: 550px) {
             padding: 5px;
         }
+        @media screen and (max-width: 486px) {
+            font-size: 10px;
+        }
+    }
+
+    @media screen and (max-width: 550px) {
+        width: 380px;
+        height: 200px;
+        overflow: hidden;
+    }
+    @media screen and (max-width: 486px) {
+        width: 315px;
+        height: 160px;
     }
 `;
 

@@ -51,48 +51,54 @@ export const MainSection: FC = () => {
 };
 
 const Wrapper = styled.section`
-  min-height: 500px;
-  margin-left: 20px;
-  margin-right: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  gap: 5px;
+    min-height: 500px;
+    margin-left: 40px;
+    margin-right: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    gap: 5px;
 
-  @media screen and (max-width: 1070px) {
-    gap: 20px;
-    padding-top: 70px;
-    flex-direction: column;
-    justify-content: center;
+    @media screen and (max-width: 1070px) {
+        gap: 50px;
+        padding-top: 30px;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+    @media screen and (max-width: 576px) {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
 `;
 
 const Info = styled.div`
-  z-index: 2;
-  position: relative;
+    z-index: 2;
+    position: relative;
 
-  span {
-    display: inline-block;
-    height: 48px;
-    font-size: 48px;
-    font-weight: 700;
-
-  }
-
-  h1 {
-    font-size: 48px;
-    font-weight: 700;
-
-    span {
-      color: ${({theme}) => theme.colors.textSuccess};
+    h1, span {
+        font-weight: 700;
+        font-size: calc( (100vw - 410px)/(1280 - 410) * (52 - 34) + 34px);
     }
-  }
+    
+    &>span {
+        position: absolute;
+    }
+    
+    h1 {
+        margin-top: 50px;
+        span {
+            color: ${({theme}) => theme.colors.textSuccess};
+        }
+    }
 
-  p {
-    margin-top: 20px;
-    max-width: 500px;
-    color: ${({theme}) => theme.colors.textSecondaryColor};
-  }
+    p {
+        margin-top: 20px;
+        max-width: 500px;
+        color: ${({theme}) => theme.colors.textSecondaryColor};
+    }
 `;
 
 

@@ -14,50 +14,23 @@ export const SkillItem: FC<IProps> = ({title, isActive = false}) => {
     );
 };
 
-const growCornersAnimation = keyframes`
-  from {
-    width: 30px;
-    height: 30px;
-  }
-  to {
-    width: 50px;
-    height: 50px;
-  }
-`;
 
 const Wrapper = styled.li`
-  width: 150px;
-  height: 100px;
-  color: ${({theme}) => theme.colors.textSecondary};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${({theme}) => theme.colors.backgroundSecondary};
-  text-align: center;
-  position: relative;
+    padding: 10px;
+    color: #4286f4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    background-color: #020b13;
+    transition: .4s;
 
-  &::before, &::after {
-    content: '';
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: white;
-    transition: width 0.3s, height 0.3s;
-  }
-
-  &::before {
-    top: -2px;
-    left: -2px;
-  }
-
-  &::after {
-    bottom: -2px;
-    right: -2px;
-  }
-
-  &:hover::before,
-  &:hover::after {
-    animation: ${growCornersAnimation} 0.3s forwards;
-  }
+    &:hover {
+        outline: 1px solid #4286f4;
+        color: ${({theme}) => theme.colors.textSecondary};
+        box-shadow: 0 0 20px #00b3ff, 0 0 35px #4286f4, 0 0 50px #39b3e3;
+    }
 `;
 

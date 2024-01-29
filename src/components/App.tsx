@@ -5,7 +5,7 @@ import styled, {ThemeProvider} from "styled-components";
 import {Header} from "../layout/Header";
 import {Container} from "./Container";
 import {MainSection} from "../sections/MainSection";
-import {SkillsSection} from "../sections/SkillsSection";
+import {PortfolioSection} from "../sections/PortfolioSection";
 
 export const App = () => {
     return (
@@ -14,7 +14,7 @@ export const App = () => {
                 <Container>
                     <Header/>
                     <MainSection/>
-                    <SkillsSection/>
+                    <PortfolioSection/>
                 </Container>
                 <GlobalStyle/>
             </AppWrapper>
