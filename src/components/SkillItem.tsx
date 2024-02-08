@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import styled, {keyframes} from "styled-components";
+import styled, {css, keyframes} from "styled-components";
 
 interface IProps {
     title: string,
@@ -8,29 +8,48 @@ interface IProps {
 
 export const SkillItem: FC<IProps> = ({title, isActive = false}) => {
     return (
-        <Wrapper>
+        <Wrapper isActive={isActive}>
             <h3>{title}</h3>
         </Wrapper>
     );
 };
 
+const flicker = keyframes`
+    0% {
+        text-shadow: 0 0 5px #00BFFF, 0 0 10px #3d5881, 0 0 10px #384c69; /* Начальное состояние свечения */
+    }
+    50% {
+        text-shadow: 0 0 2px #00BFFF, 0 0 5px #3d5881, 0 0 7px #384c69;    }
+    100% {
+        text-shadow: 0 0 5px #00BFFF, 0 0 10px #3d5881, 0 0 10px #384c69; /* Конечное состояние свечения */
+    }
+`
 
-const Wrapper = styled.li`
-    padding: 10px;
-    color: #4286f4;
-    border-radius: 8px;
+interface IWrapperProps {
+    isActive: boolean
+}
+
+const Wrapper = styled.li<IWrapperProps>`
+    z-index: 100;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
     position: relative;
-    background-color: #020b13;
-    transition: .4s;
 
-    &:hover {
-        outline: 1px solid #4286f4;
-        color: ${({theme}) => theme.colors.textSecondary};
-        box-shadow: 0 0 20px #00b3ff, 0 0 35px #4286f4, 0 0 50px #39b3e3;
+
+    h3 {
+        font-size: calc((100vw - 410px) / (1280 - 410) * (24 - 16) + 16px);
+        color: #384c69;
+        text-shadow:  0 0 3px #384c69;
+        transition: .4s;
+        ${props => props.isActive && css`
+            color: white;
+            text-shadow: 0 0 5px #FFFFFF, 0 0 10px #00BFFF, 0 0 15px #384c69;
+            animation: ${flicker} 3s infinite;
+        `}
     }
+
+
 `;
 

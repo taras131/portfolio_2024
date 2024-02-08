@@ -6,26 +6,28 @@ import {Header} from "../layout/Header";
 import {Container} from "./Container";
 import {MainSection} from "../sections/MainSection";
 import {PortfolioSection} from "../sections/PortfolioSection";
+import {StarsSky} from "./StarsSky";
 
 export const App = () => {
     return (
         <ThemeProvider theme={theme}>
             <AppWrapper>
-                <Container>
                     <Header/>
                     <MainSection/>
                     <PortfolioSection/>
-                </Container>
                 <GlobalStyle/>
+                <StarsSky/>
             </AppWrapper>
         </ThemeProvider>
     );
 }
 
 const AppWrapper = styled.div`
-  overflow: hidden;
-  color: ${({theme}) => theme.colors.textPrimary};
-  background-color: ${({theme}) => theme.colors.backgroundPrimary};
+    width: 100%;
+    overflow: hidden;
+    color: ${({theme}) => theme.colors.textPrimary};
+    background-color: ${({theme}) => theme.colors.backgroundPrimary};
+    padding-bottom: 800px;
 `;
 
 

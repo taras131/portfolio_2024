@@ -1,20 +1,25 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styled, {css} from "styled-components";
-import {works} from "../utils/consts";
+import {skills, works} from "../utils/consts";
 import sprite from "../accest/icons/sprite.svg";
 import {PortfolioWorksItem} from "../components/PortfolioWorksItem";
 import {PortfolioWorkDescription} from "../components/PortfolioWorkDescription";
+import {SkillItem} from "../components/SkillItem";
 
 export const PortfolioSection = () => {
     const ref = useRef(null)
     const [activeWorkId, setActiveWorkId] = useState(0)
     const [windowWidth, setWindowWidth] = useState(Math.round(window.innerWidth));
-    const activeSlideItemWidth = Math.round(windowWidth * 0.7)
+    console.log(windowWidth)
+    let activeSlideItemWidth = Math.round(windowWidth * 0.7)
+    if (windowWidth > 1240) activeSlideItemWidth = Math.round(windowWidth * 0.5)
+    if (windowWidth < 768) activeSlideItemWidth = Math.round(windowWidth * 0.8)
     const standardSlideItemWidth = Math.round(activeSlideItemWidth * 0.6)
     const startingMargin = Math.round((windowWidth - activeSlideItemWidth) / 2);
     const offset = Math.round((standardSlideItemWidth + 10) * activeWorkId - startingMargin);
     const paginationArr = works.map(work => work.id)
     const activeWork = works.filter(work => work.id === activeWorkId)[0]
+    console.log(startingMargin)
     const handlePrevWorkClick = () => {
         setActiveWorkId(prev => prev > 0 ? prev - 1 : prev)
     }
@@ -69,15 +74,25 @@ export const PortfolioSection = () => {
                             activeSlideItemWidth={activeSlideItemWidth}
                             standardSlideItemWidth={standardSlideItemWidth}
                             handlePortfolioClick={handleSetActiveWorkId(work.id)}/>))
+    const skillSList = skills.map(skill => (<SkillItem title={skill}
+                                                       isActive={activeWork.skills.includes(skill)}/>))
     return (
         <Wrapper>
+            <SectionHeader>
+                <h2>Samples:</h2>
+                <ul>
+                    {skillSList}
+                </ul>
+            </SectionHeader>
             <Slider>
-                <PrevButton onClick={handlePrevWorkClick}>
-                    <svg width={"24px"} height={"24px"} viewBox={"0 0 24 24"}
-                         xmlns="http://www.w3.org/2000/svg">
-                        <use xlinkHref={`${sprite}#${"arrow-left"}`}/>
-                    </svg>
-                </PrevButton>
+                {activeWorkId !== 0 && (
+                    <PrevButton onClick={handlePrevWorkClick}>
+                        <svg width={"24px"} height={"24px"} viewBox={"0 0 24 24"}
+                             xmlns="http://www.w3.org/2000/svg">
+                            <use xlinkHref={`${sprite}#${"arrow-left"}`}/>
+                        </svg>
+                    </PrevButton>
+                )}
                 <SliderContainer ref={ref}>
                     <SliderContent offset={-offset}
                                    startingMargin={startingMargin + "px"}
@@ -86,12 +101,14 @@ export const PortfolioSection = () => {
                         {portfolioList}
                     </SliderContent>
                 </SliderContainer>
-                <NextButton onClick={handleNextWorkClick}>
-                    <svg width={"24px"} height={"24px"} viewBox={"0 0 24 24"}
-                         xmlns="http://www.w3.org/2000/svg">
-                        <use xlinkHref={`${sprite}#${"arrow-left"}`}/>
-                    </svg>
-                </NextButton>
+                {activeWorkId !== works.length - 1 && (
+                    <NextButton onClick={handleNextWorkClick}>
+                        <svg width={"24px"} height={"24px"} viewBox={"0 0 24 24"}
+                             xmlns="http://www.w3.org/2000/svg">
+                            <use xlinkHref={`${sprite}#${"arrow-left"}`}/>
+                        </svg>
+                    </NextButton>
+                )}
             </Slider>
             <PortfolioWorkDescription width={activeSlideItemWidth}
                                       startingMargin={startingMargin}
@@ -104,16 +121,19 @@ export const PortfolioSection = () => {
 };
 
 const Wrapper = styled.section`
-    margin-top: 70px;
+    z-index: 100;
+    padding-top: 60px;
+ 
 `;
 
 const Slider = styled.div`
     margin-top: 30px;
     position: relative;
+    z-index: 100;
 
-    button {
+    & > button {
         height: 100%;
-        width: 30px;
+        width: 50px;
         cursor: pointer;
         opacity: .5;
         position: absolute;
@@ -124,8 +144,35 @@ const Slider = styled.div`
         &:hover {
             opacity: .8;
         }
+
+        @media screen and (max-width: 768px) {
+            width: 30px;
+        }
     }
 `;
+
+const SectionHeader = styled.div`
+    margin: 0 auto;
+    max-width: 1440px;
+    width: 100%;
+    padding: 0 10px;
+
+    h2 {
+        font-size: calc((100vw - 410px) / (1280 - 410) * (38 - 26) + 26px);
+    }
+
+    & > ul {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        @media screen and (max-width: 768px) {
+            margin-top: 40px;
+        }
+    }
+`
 
 const PrevButton = styled.button`
     left: 0;
@@ -141,10 +188,6 @@ const NextButton = styled.button`
     }
 `;
 
-interface ISliderContainerProps {
-    activeSlideItemWidth: number
-}
-
 const SliderContainer = styled.div`
     overflow: hidden;
 `;
@@ -157,17 +200,13 @@ interface ISliderContentProps {
 }
 
 const SliderContent = styled.div<ISliderContentProps>`
+    z-index: 100;
     display: grid;
     grid-auto-flow: column;
     gap: 10px;
     align-items: center;
     transition: .4s;
     transform: translateX(${props => props.offset + "px"});
-    height: ${props => (props.activeSlideItemWidth * 1080 / 1600 + 100 + "px")};
-    ${props => props.activeWorkId !== 0 && css`
-        @media only screen and (
-            max-width: 435px) {
-            transform: translateX(${props.offset - 20 + "px"});
-    `} 
+    height: ${props => (props.activeSlideItemWidth * 1080 / 1600 + 50 + "px")};
 }
 `;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import {SolarSystem} from "../components/SolarSystem";
 import {mainSectionDescriptionText} from "../utils/consts";
 
-const texts = ["Шёь Ефкфы Яму", "I’m Taras Zverev"];
+const texts = ["Шёь Е", "I’m Taras Zverev"];
 
 export const MainSection: FC = () => {
     const [displayedText, setDisplayedText] = useState('');
@@ -37,42 +37,47 @@ export const MainSection: FC = () => {
     }, [displayedText, texts, currentTextIndex, currentIndex]);
     return (
         <Wrapper>
-            <Info>
-                <span>{displayedText}</span>
-                <h1><span>Frontend</span> developer</h1>
-                <p>
-                    {mainSectionDescriptionText}
-                </p>
+            <Container>
+                <Info>
+                    <span>{displayedText}</span>
+                    <h1><span>Frontend</span> developer</h1>
+                    <p>
+                        {mainSectionDescriptionText}
+                    </p>
+                </Info>
                 <SolarSystem/>
-            </Info>
-            <CodeFragment myName={displayedText}/>
+                <CodeFragment myName={displayedText}/>
+            </Container>
         </Wrapper>
     );
 };
 
 const Wrapper = styled.section`
-    min-height: 500px;
-    margin-left: 40px;
-    margin-right: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    gap: 5px;
-
-    @media screen and (max-width: 1070px) {
-        gap: 50px;
-        padding-top: 30px;
-        flex-direction: column;
-        justify-content: center;
-        margin-left: 25px;
-        margin-right: 25px;
-    }
-    @media screen and (max-width: 576px) {
-        margin-left: 15px;
-        margin-right: 15px;
+  padding: 0 20px;
+    @media screen and (max-width: 500px){
+        padding: 0 10px;
     }
 `;
+
+const Container = styled.div`
+    position: relative;
+    margin: 0 auto;
+    min-height: calc(100vh - 60px);
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    @media screen and (max-width: 1030px) {
+        gap: 100px;
+        padding-top: 80px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+`
 
 const Info = styled.div`
     z-index: 2;
@@ -80,22 +85,23 @@ const Info = styled.div`
 
     h1, span {
         font-weight: 700;
-        font-size: calc( (100vw - 410px)/(1280 - 410) * (52 - 34) + 34px);
+        font-size: calc((100vw - 410px) / (1280 - 410) * (52 - 34) + 34px);
     }
-    
-    &>span {
+
+    & > span {
         position: absolute;
     }
-    
+
     h1 {
         margin-top: 50px;
-        span {
+        
+        & > span {
             color: ${({theme}) => theme.colors.textSuccess};
         }
     }
 
     p {
-        margin-top: 20px;
+        margin-top: 40px;
         max-width: 500px;
         color: ${({theme}) => theme.colors.textSecondaryColor};
     }
