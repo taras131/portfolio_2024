@@ -7,6 +7,7 @@ import burger_1 from "../accest/img/burger_1.bmp"
 import burger_2 from "../accest/img/burger_2.bmp"
 import burger_3 from "../accest/img/burger_3.bmp"
 import {IWork} from "../models/iWorks";
+import {IHistory} from "../models/iHistory";
 
 
 export const mainSectionDescriptionText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
@@ -45,3 +46,43 @@ export const works: IWork [] = [
 ]
 
 export const skills = ["React", "Typescript", "Redux", "Toolkit", "JavaScript", "Styled Component", "Material UI", "Node js"]
+
+export const educationHistory: IHistory [] = [
+    {
+        id: 0,
+        name: "It инкубатор",
+        role: "Student",
+        discipline: "Frontend Developer",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet dapibus nibh ut faucibus nunc, " +
+            "egestas id amet porttitor. Pulvinar quisque sed amet, nulla nunc. Eleifend sodales posuere fusce tempus " +
+            "etiam et pellentesque. Molestie risus enim neque eget dui.",
+        dateStart: "Dec 2021",
+        dateFinish: "Today"
+    },
+    {
+        id: 1,
+        name: "Яндекс Практикум",
+        role: "Student",
+        discipline: "Реакт разработчик",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet dapibus nibh ut faucibus nunc, " +
+            "egestas id amet porttitor. Pulvinar quisque sed amet, nulla nunc. Eleifend sodales posuere fusce tempus " +
+            "etiam et pellentesque. Molestie risus enim neque eget dui.",
+        dateStart: "Nov 2021",
+        dateFinish: "Feb 2022"
+    },
+]
+
+export const workHistory: IHistory [] = [
+    {
+        id: 0,
+        name: "Лиза Алерт",
+        role: "Frontend Developer",
+        discipline: "Frontend Developer",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet dapibus nibh ut faucibus nunc, " +
+            "egestas id amet porttitor. Pulvinar quisque sed amet, nulla nunc. Eleifend sodales posuere fusce tempus " +
+            "etiam et pellentesque. Molestie risus enim neque eget dui.",
+        dateStart: "Mar 2022",
+        dateFinish: "Aug 2022"
+    },
+
+]

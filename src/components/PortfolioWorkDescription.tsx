@@ -71,7 +71,7 @@ interface IWrapperProps {
 }
 
 const Wrapper = styled.div<IWrapperProps>`
-    margin-top: 20px;
+    margin-top: 30px;
     margin-left: ${props => props.startingMargin};
     width: ${props => props.width};
     height: 150px;

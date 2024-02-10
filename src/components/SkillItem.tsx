@@ -39,7 +39,7 @@ const Wrapper = styled.li<IWrapperProps>`
 
 
     h3 {
-        font-size: calc((100vw - 410px) / (1280 - 410) * (24 - 16) + 16px);
+        font-size: calc((100vw - 410px) / (1280 - 410) * (20 - 16) + 16px);
         color: #384c69;
         text-shadow:  0 0 3px #384c69;
         transition: .4s;

@@ -10,16 +10,14 @@ export const PortfolioSection = () => {
     const ref = useRef(null)
     const [activeWorkId, setActiveWorkId] = useState(0)
     const [windowWidth, setWindowWidth] = useState(Math.round(window.innerWidth));
-    console.log(windowWidth)
     let activeSlideItemWidth = Math.round(windowWidth * 0.7)
-    if (windowWidth > 1240) activeSlideItemWidth = Math.round(windowWidth * 0.5)
+    if (windowWidth > 1340) activeSlideItemWidth = Math.round(windowWidth * 0.45)
     if (windowWidth < 768) activeSlideItemWidth = Math.round(windowWidth * 0.8)
     const standardSlideItemWidth = Math.round(activeSlideItemWidth * 0.6)
     const startingMargin = Math.round((windowWidth - activeSlideItemWidth) / 2);
     const offset = Math.round((standardSlideItemWidth + 10) * activeWorkId - startingMargin);
     const paginationArr = works.map(work => work.id)
     const activeWork = works.filter(work => work.id === activeWorkId)[0]
-    console.log(startingMargin)
     const handlePrevWorkClick = () => {
         setActiveWorkId(prev => prev > 0 ? prev - 1 : prev)
     }
@@ -77,8 +75,8 @@ export const PortfolioSection = () => {
     const skillSList = skills.map(skill => (<SkillItem title={skill}
                                                        isActive={activeWork.skills.includes(skill)}/>))
     return (
-        <Wrapper>
-            <SectionHeader>
+        <Wrapper >
+            <SectionHeader id={"works"}>
                 <h2>Samples:</h2>
                 <ul>
                     {skillSList}
@@ -121,13 +119,32 @@ export const PortfolioSection = () => {
 };
 
 const Wrapper = styled.section`
-    z-index: 100;
-    padding-top: 60px;
- 
+
+
+
+`;
+
+const SectionHeader = styled.div`
+    max-width: 1440px;
+    width: 100%;
+    padding: 0 10px;
+    margin: 0 auto;
+    
+    & > ul {
+        padding: 30px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+`;
+
+const SliderContainer = styled.div`
+    overflow: hidden;
 `;
 
 const Slider = styled.div`
-    margin-top: 30px;
     position: relative;
     z-index: 100;
 
@@ -135,11 +152,12 @@ const Slider = styled.div`
         height: 100%;
         width: 50px;
         cursor: pointer;
-        opacity: .5;
         position: absolute;
         border: none;
         z-index: 100;
         background-color: black;
+        opacity: 0;
+        transition: .3s;
 
         &:hover {
             opacity: .8;
@@ -147,32 +165,15 @@ const Slider = styled.div`
 
         @media screen and (max-width: 768px) {
             width: 30px;
+            opacity: .5;
         }
+    }
+
+    &:hover > button {
+        opacity: 1;
     }
 `;
 
-const SectionHeader = styled.div`
-    margin: 0 auto;
-    max-width: 1440px;
-    width: 100%;
-    padding: 0 10px;
-
-    h2 {
-        font-size: calc((100vw - 410px) / (1280 - 410) * (38 - 26) + 26px);
-    }
-
-    & > ul {
-        margin-top: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-        flex-wrap: wrap;
-        @media screen and (max-width: 768px) {
-            margin-top: 40px;
-        }
-    }
-`
 
 const PrevButton = styled.button`
     left: 0;
@@ -188,9 +189,6 @@ const NextButton = styled.button`
     }
 `;
 
-const SliderContainer = styled.div`
-    overflow: hidden;
-`;
 
 interface ISliderContentProps {
     startingMargin: string

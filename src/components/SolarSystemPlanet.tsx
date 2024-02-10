@@ -5,6 +5,8 @@ interface IProps {
     size: number;
     orbitRadius: number
     orbitTime: number
+    rotateTime?: number
+    img?: string
     children?: React.ReactNode
 }
 
@@ -12,13 +14,17 @@ export const SolarSystemPlanet: FC<IProps> = ({
                                                   size,
                                                   orbitRadius,
                                                   orbitTime,
+                                                  rotateTime = 6,
+                                                  img,
                                                   children
                                               }) => {
     return (
         <Wrapper size={size}
                  orbitRadius={orbitRadius}
-                 orbitTime={orbitTime}>
+                 orbitTime={orbitTime}
+                 rotateTime={rotateTime}>
             {children && children}
+            {img && (<img src={img} alt="planet"/>)}
         </Wrapper>
     );
 };
@@ -36,7 +42,17 @@ interface IWrapperProps {
     size: number;
     orbitRadius: number
     orbitTime: number
+    rotateTime: number
 }
+
+const rotate = keyframes  `
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+`
 
 const Wrapper = styled.div<IWrapperProps>`
     height: ${props => props.size + "px"};
@@ -44,8 +60,16 @@ const Wrapper = styled.div<IWrapperProps>`
     border-radius: 50%;
     position: absolute;
     z-index: 1;
-  
-    
+
+    & > img {
+        height: ${props => props.size + "px"};
+        width: ${props => props.size + "px"};
+        border-radius: 50%;
+        object-fit: cover;
+        filter: brightness(50%);
+        animation: ${rotate} ${props => props.rotateTime + "s"} linear infinite;
+    }
+
     ${props => props.orbitRadius && css`
         animation: ${orbit(props.orbitRadius)} ${props.orbitTime + "s"} infinite linear;
     `};

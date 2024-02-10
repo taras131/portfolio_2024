@@ -36,7 +36,7 @@ export const MainSection: FC = () => {
         }
     }, [displayedText, texts, currentTextIndex, currentIndex]);
     return (
-        <Wrapper>
+        <Wrapper id={"main"}>
             <Container>
                 <Info>
                     <span>{displayedText}</span>
@@ -53,16 +53,19 @@ export const MainSection: FC = () => {
 };
 
 const Wrapper = styled.section`
-  padding: 0 20px;
-    @media screen and (max-width: 500px){
+    padding: 0 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    @media screen and (max-width: 500px) {
         padding: 0 10px;
     }
 `;
 
 const Container = styled.div`
     position: relative;
-    margin: 0 auto;
-    min-height: calc(100vh - 60px);
     max-width: 1440px;
     width: 100%;
     display: flex;
@@ -70,8 +73,7 @@ const Container = styled.div`
     justify-content: space-around;
     gap: 10px;
     @media screen and (max-width: 1030px) {
-        gap: 100px;
-        padding-top: 80px;
+        gap: 70px;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -101,7 +103,7 @@ const Info = styled.div`
     }
 
     p {
-        margin-top: 40px;
+        margin-top: 20px;
         max-width: 500px;
         color: ${({theme}) => theme.colors.textSecondaryColor};
     }

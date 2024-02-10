@@ -47,25 +47,16 @@ export const PortfolioWorksItem: FC<IProps> = ({
             handlePrevClick()
         }
     }
-    const disableSiteScroll = () => {
 
-    }
-    const enableSiteScroll = () => {
-
-    }
     useEffect(() => {
         let element: any = null;
         if (ref && ref.current && isActive) {
             element = ref.current;
             element.addEventListener('wheel', handleWheel);
-            element.addEventListener('mouseover', disableSiteScroll);
-            element.addEventListener('mouseout', enableSiteScroll);
         }
         if (isActive) {
             return () => {
                 element.removeEventListener('wheel', handleWheel);
-                element.addEventListener('mouseover', disableSiteScroll);
-                element.addEventListener('mouseout', enableSiteScroll);
             };
         }
 

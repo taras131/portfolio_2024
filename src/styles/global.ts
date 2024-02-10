@@ -12,7 +12,6 @@ export const GlobalStyle = createGlobalStyle`
         -moz-osx-font-smoothing: grayscale;
     }
 
-   
 
     code {
         font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -33,5 +32,11 @@ export const GlobalStyle = createGlobalStyle`
     a {
         color: white;
         text-decoration: none;
+    }
+
+
+    h2 {
+        font-size: calc((100vw - 410px) / (1280 - 410) * (38 - 26) + 26px);
+        z-index: 100;
     }
 `

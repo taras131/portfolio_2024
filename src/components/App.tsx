@@ -7,14 +7,18 @@ import {Container} from "./Container";
 import {MainSection} from "../sections/MainSection";
 import {PortfolioSection} from "../sections/PortfolioSection";
 import {StarsSky} from "./StarsSky";
+import {EducationSection} from "../sections/EducationSection";
+import {WorkSection} from "../sections/WorkSection";
 
 export const App = () => {
     return (
         <ThemeProvider theme={theme}>
             <AppWrapper>
-                    <Header/>
-                    <MainSection/>
-                    <PortfolioSection/>
+                <Header/>
+                <MainSection/>
+                <PortfolioSection/>
+                <EducationSection/>
+                <WorkSection/>
                 <GlobalStyle/>
                 <StarsSky/>
             </AppWrapper>
