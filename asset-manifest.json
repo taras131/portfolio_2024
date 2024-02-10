@@ -1,26 +1,28 @@
 {
   "files": {
-    "main.js": "/portfolio_2024/static/js/main.a25a3252.js",
+    "main.js": "/portfolio_2024/static/js/main.e5ca9e2f.js",
     "static/js/787.edb24343.chunk.js": "/portfolio_2024/static/js/787.edb24343.chunk.js",
     "static/media/supply_1.bmp": "/portfolio_2024/static/media/supply_1.0f6e398de0c69940c014.bmp",
     "static/media/burger_3.bmp": "/portfolio_2024/static/media/burger_3.b85c513dd8fbfcd0b922.bmp",
     "static/media/burger_1.bmp": "/portfolio_2024/static/media/burger_1.2a8a0cd4ba75e65dd66c.bmp",
     "static/media/burger_2.bmp": "/portfolio_2024/static/media/burger_2.c4930f0871e446bdc4b0.bmp",
-    "static/media/earth.png": "/portfolio_2024/static/media/earth.bff93847ab909a87dd0e.png",
-    "static/media/mercury.png": "/portfolio_2024/static/media/mercury.b2603a6f1f02866d9d9f.png",
-    "static/media/mars.jpg": "/portfolio_2024/static/media/mars.899b8140e9acbb7ed27d.jpg",
-    "static/media/venus.png": "/portfolio_2024/static/media/venus.a36fa80f23aac855fa50.png",
     "static/media/supply_2.jpg": "/portfolio_2024/static/media/supply_2.5f837d672a97c0885334.jpg",
     "static/media/troubleshooting_1.jpg": "/portfolio_2024/static/media/troubleshooting_1.adeb808615352b24fc61.jpg",
+    "static/media/moon.png": "/portfolio_2024/static/media/moon.fe34c8512ec092253c00.png",
     "static/media/troubleshooting_2.jpg": "/portfolio_2024/static/media/troubleshooting_2.ce1785a9c275dbff10a1.jpg",
     "static/media/supply_3.jpg": "/portfolio_2024/static/media/supply_3.a74d086771435400dbf4.jpg",
-    "static/media/jupiter_1.png": "/portfolio_2024/static/media/jupiter_1.fc840da707ea2ee01566.png",
+    "static/media/uran.png": "/portfolio_2024/static/media/uran.f601f12b3881fd60fd8f.png",
+    "static/media/earth.png": "/portfolio_2024/static/media/earth.d342c182b61daca58db3.png",
+    "static/media/mars.png": "/portfolio_2024/static/media/mars.9ad7072ef3864a1f88ac.png",
+    "static/media/jupiter.png": "/portfolio_2024/static/media/jupiter.a02d11054eb5eb454534.png",
+    "static/media/venus.png": "/portfolio_2024/static/media/venus.18a1369aebbfd1e8f388.png",
+    "static/media/mercury.png": "/portfolio_2024/static/media/mercury.88c85e734d21098a3797.png",
     "index.html": "/portfolio_2024/index.html",
     "static/media/sprite.svg": "/portfolio_2024/static/media/sprite.22d85fa208aeee97d68e5ea7693c169c.svg",
-    "main.a25a3252.js.map": "/portfolio_2024/static/js/main.a25a3252.js.map",
+    "main.e5ca9e2f.js.map": "/portfolio_2024/static/js/main.e5ca9e2f.js.map",
     "787.edb24343.chunk.js.map": "/portfolio_2024/static/js/787.edb24343.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.a25a3252.js"
+    "static/js/main.e5ca9e2f.js"
   ]
 }
