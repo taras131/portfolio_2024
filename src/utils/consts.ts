@@ -8,6 +8,7 @@ import burger_2 from "../accest/img/burger_2.bmp"
 import burger_3 from "../accest/img/burger_3.bmp"
 import {IWork} from "../models/iWorks";
 import {IHistory} from "../models/iHistory";
+import {INavigation} from "../models/iNavigation";
 
 
 export const mainSectionDescriptionText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
@@ -84,5 +85,10 @@ export const workHistory: IHistory [] = [
         dateStart: "Mar 2022",
         dateFinish: "Aug 2022"
     },
+]
 
+export const navigation: INavigation [] = [
+    {id: 0, title: "Main",},
+    {id: 1, title: "Portfolio",},
+    {id: 2, title: "Education",},
 ]

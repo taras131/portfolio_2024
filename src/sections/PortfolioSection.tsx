@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {FC, RefObject, useEffect, useRef, useState} from 'react';
 import styled, {css} from "styled-components";
 import {skills, works} from "../utils/consts";
 import sprite from "../accest/icons/sprite.svg";
@@ -6,7 +6,10 @@ import {PortfolioWorksItem} from "../components/PortfolioWorksItem";
 import {PortfolioWorkDescription} from "../components/PortfolioWorkDescription";
 import {SkillItem} from "../components/SkillItem";
 
-export const PortfolioSection = () => {
+interface IProps  {
+    navRef: RefObject<HTMLHeadingElement>
+}
+export const PortfolioSection:FC<IProps> = ({navRef}) => {
     const ref = useRef(null)
     const [activeWorkId, setActiveWorkId] = useState(0)
     const [windowWidth, setWindowWidth] = useState(Math.round(window.innerWidth));
@@ -75,7 +78,7 @@ export const PortfolioSection = () => {
     const skillSList = skills.map(skill => (<SkillItem title={skill}
                                                        isActive={activeWork.skills.includes(skill)}/>))
     return (
-        <Wrapper >
+        <Wrapper ref={navRef}>
             <SectionHeader id={"works"}>
                 <h2>Samples:</h2>
                 <ul>

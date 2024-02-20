@@ -1,17 +1,23 @@
-import React from 'react';
+import React, {FC} from 'react';
 import styled from "styled-components";
 import {Button} from "../components/Button";
 import {Navigation} from "../components/Navigation";
 
-export const Header = () => {
+
+interface IProps {
+    activeId: number
+    handleNavItemClick: (id: number) => () => void
+    openContactsModal: () => void
+}
+export const Header:FC<IProps> = ({activeId, handleNavItemClick, openContactsModal}) => {
 
     return (
         <AppHeader>
             <Container>
-                <Button variant={"text"}>
+                <Button variant={"text"} onClick={openContactsModal}>
                     Tell Me
                 </Button>
-                <Navigation/>
+                <Navigation activeId={activeId} handleNavItemClick={handleNavItemClick}/>
             </Container>
         </AppHeader>
     );

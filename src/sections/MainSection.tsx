@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, RefObject, useEffect, useState} from 'react';
 import {CodeFragment} from "../components/CodeFragment";
 import styled from "styled-components";
 import {SolarSystem} from "../components/SolarSystem";
@@ -6,7 +6,11 @@ import {mainSectionDescriptionText} from "../utils/consts";
 
 const texts = ["Шёь Е", "I’m Taras Zverev"];
 
-export const MainSection: FC = () => {
+interface IProps {
+    navRef: RefObject<HTMLHeadingElement>
+}
+
+export const MainSection: FC<IProps> = ({navRef}) => {
     const [displayedText, setDisplayedText] = useState('');
     const [currentTextIndex, setCurrentTextIndex] = useState(0);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -36,19 +40,21 @@ export const MainSection: FC = () => {
         }
     }, [displayedText, texts, currentTextIndex, currentIndex]);
     return (
-        <Wrapper id={"main"}>
-            <Container>
-                <Info>
-                    <span>{displayedText}</span>
-                    <h1><span>Frontend</span> developer</h1>
-                    <p>
-                        {mainSectionDescriptionText}
-                    </p>
-                </Info>
-                <SolarSystem/>
-                <CodeFragment myName={displayedText}/>
-            </Container>
-        </Wrapper>
+        <div >
+            <Wrapper ref={navRef}>
+                <Container>
+                    <Info>
+                        <span>{displayedText}</span>
+                        <h1><span>Frontend</span> developer</h1>
+                        <p>
+                            {mainSectionDescriptionText}
+                        </p>
+                    </Info>
+                    <SolarSystem/>
+                    <CodeFragment myName={displayedText}/>
+                </Container>
+            </Wrapper>
+        </div>
     );
 };
 
@@ -96,7 +102,7 @@ const Info = styled.div`
 
     h1 {
         margin-top: 50px;
-        
+
         & > span {
             color: ${({theme}) => theme.colors.textSuccess};
         }

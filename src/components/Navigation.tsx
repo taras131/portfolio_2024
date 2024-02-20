@@ -1,19 +1,16 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import styled, {css, keyframes} from "styled-components";
+import {navigation} from "../utils/consts";
 
-const links = [
-    {title: "Main", href: "main"},
-    {title: "Works", href: "works"},
-    {title: "Education", href: "education"},
-]
-export const Navigation = () => {
-    const [activeNavItem, setActiveNavItem] = useState("About Me")
-    const handleNavItemClick = (activeItem: string) => () => {
-        setActiveNavItem(activeItem)
-    }
-    const linkList = links.map(link => (
-        <NavItem key={link.href} onClick={handleNavItemClick(link.title)} isActive={activeNavItem === link.title}>
-            <a href={`#${link.href}`}>{link.title}</a>
+interface IProps {
+    activeId: number
+    handleNavItemClick: (id: number) => () => void
+}
+
+export const Navigation: FC<IProps> = ({activeId, handleNavItemClick}) => {
+    const linkList = navigation.map(nav => (
+        <NavItem key={nav.id} onClick={handleNavItemClick(nav.id)} isActive={activeId === nav.id}>
+            {nav.title}
         </NavItem>))
     return (
         <NavWrapper>
@@ -59,20 +56,15 @@ const NavItem = styled.li<INavItem>`
     font-size: 20px;
     transition: .4s;
     position: relative;
-
-    a {
-        color: ${({theme}) => theme.colors.textSecondary};
-    }
+    color: ${({theme}) => theme.colors.textSecondary};
+    cursor: pointer;
 
     ${props => props.isActive && css<INavItem>`
         transition: .4s;
+        color: ${({theme}) => theme.colors.textPrimary};
+        font-weight: 600;
 
-        a {
-            color: ${({theme}) => theme.colors.textPrimary};
-            font-weight: 600;
-        }
-
-        *::after {
+        &::after {
             content: "";
             display: block;
             background-color: ${({theme}) => theme.colors.textPrimary};

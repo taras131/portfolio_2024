@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {FC, RefObject} from 'react';
 import styled from "styled-components";
 import {HistoryList} from "../components/HistoreList";
 import {educationHistory} from "../utils/consts";
 
-export const EducationSection = () => {
+interface IProps {
+    navRef: RefObject<HTMLHeadingElement>
+}
+
+export const EducationSection: FC<IProps> = ({navRef}) => {
     return (
-        <Wrapper id={"education"}>
+        <Wrapper ref={navRef}>
             <Container>
                 <h2>Education History:</h2>
                 <HistoryList history={educationHistory}/>
