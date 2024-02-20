@@ -1,28 +1,30 @@
 {
   "files": {
-    "main.js": "/portfolio_2024/static/js/main.e0d0b2bf.js",
+    "main.js": "/portfolio_2024/static/js/main.ee11afa4.js",
     "static/js/787.edb24343.chunk.js": "/portfolio_2024/static/js/787.edb24343.chunk.js",
     "static/media/supply_1.bmp": "/portfolio_2024/static/media/supply_1.0f6e398de0c69940c014.bmp",
     "static/media/burger_3.bmp": "/portfolio_2024/static/media/burger_3.b85c513dd8fbfcd0b922.bmp",
     "static/media/burger_1.bmp": "/portfolio_2024/static/media/burger_1.2a8a0cd4ba75e65dd66c.bmp",
     "static/media/burger_2.bmp": "/portfolio_2024/static/media/burger_2.c4930f0871e446bdc4b0.bmp",
     "static/media/supply_2.jpg": "/portfolio_2024/static/media/supply_2.5f837d672a97c0885334.jpg",
+    "static/media/my_photo_1.png": "/portfolio_2024/static/media/my_photo_1.aa6edf5f901a07951f2e.png",
     "static/media/troubleshooting_1.jpg": "/portfolio_2024/static/media/troubleshooting_1.adeb808615352b24fc61.jpg",
     "static/media/moon.png": "/portfolio_2024/static/media/moon.fe34c8512ec092253c00.png",
     "static/media/troubleshooting_2.jpg": "/portfolio_2024/static/media/troubleshooting_2.ce1785a9c275dbff10a1.jpg",
     "static/media/supply_3.jpg": "/portfolio_2024/static/media/supply_3.a74d086771435400dbf4.jpg",
     "static/media/uran.png": "/portfolio_2024/static/media/uran.f601f12b3881fd60fd8f.png",
+    "static/media/my_photo_1.jpg": "/portfolio_2024/static/media/my_photo_1.8d2ef63313f2bc2b4ee1.jpg",
     "static/media/earth.png": "/portfolio_2024/static/media/earth.d342c182b61daca58db3.png",
     "static/media/mars.png": "/portfolio_2024/static/media/mars.9ad7072ef3864a1f88ac.png",
     "static/media/jupiter.png": "/portfolio_2024/static/media/jupiter.a02d11054eb5eb454534.png",
     "static/media/venus.png": "/portfolio_2024/static/media/venus.18a1369aebbfd1e8f388.png",
     "static/media/mercury.png": "/portfolio_2024/static/media/mercury.88c85e734d21098a3797.png",
+    "static/media/sprite.svg": "/portfolio_2024/static/media/sprite.e93fa5f3a7bb0a685acca2c6c2dab8ef.svg",
     "index.html": "/portfolio_2024/index.html",
-    "static/media/sprite.svg": "/portfolio_2024/static/media/sprite.22d85fa208aeee97d68e5ea7693c169c.svg",
-    "main.e0d0b2bf.js.map": "/portfolio_2024/static/js/main.e0d0b2bf.js.map",
+    "main.ee11afa4.js.map": "/portfolio_2024/static/js/main.ee11afa4.js.map",
     "787.edb24343.chunk.js.map": "/portfolio_2024/static/js/787.edb24343.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.e0d0b2bf.js"
+    "static/js/main.ee11afa4.js"
   ]
 }
