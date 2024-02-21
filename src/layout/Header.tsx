@@ -15,7 +15,7 @@ export const Header:FC<IProps> = ({activeId, handleNavItemClick, openContactsMod
         <AppHeader>
             <Container>
                 <Button variant={"text"} onClick={openContactsModal}>
-                    Tell Me
+                    Contact
                 </Button>
                 <Navigation activeId={activeId} handleNavItemClick={handleNavItemClick}/>
             </Container>

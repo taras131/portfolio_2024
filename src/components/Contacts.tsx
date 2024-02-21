@@ -1,16 +1,17 @@
 import React, {FC} from 'react';
 import {Modal} from "./Modal";
 import styled from "styled-components";
-import my_photo from "../accest/img/my_photo_1.png"
-import my_photo_1 from "../accest/img/my_photo_1.jpg"
+import my_photo from "../assets/img/my_photo_1.png"
+import my_photo_1 from "../assets/img/my_photo_1.jpg"
 import {IconWitchText} from "./IconWitchText";
-import location from "../accest/icons/location.png"
-import telegram from "../accest/icons/telegram-1.png"
-import phone from "../accest/icons/phone.png"
-import email from "../accest/icons/email.png"
-import instagram from "../accest/icons/instagram.png"
-import linked from "../accest/icons/linked.png"
-import git from "../accest/icons/git.png"
+import location from "../assets/icons/location.png"
+import telegram from "../assets/icons/telegram-1.png"
+import phone from "../assets/icons/phone.png"
+import email from "../assets/icons/email.png"
+import instagram from "../assets/icons/instagram.png"
+import linked from "../assets/icons/linked.png"
+import git from "../assets/icons/git.png"
+import cv from "../assets/files/zverev_cv.pdf"
 
 interface IProps {
     closeContactsModal: () => void
@@ -28,11 +29,15 @@ export const Contacts: FC<IProps> = ({closeContactsModal}) => {
                     <IconWitchText icon={phone} title={"+7 (967) 049 30 28"}/>
                     <IconWitchText icon={email} title={"mossnabitkana@gmail.com"}/>
                     <IconWitchText icon={telegram} title={"@palichtz"} link={"https://t.me/palichtz"}/>
-                    <IconWitchText icon={instagram} title={"@zverevtaras"} link={"https://www.instagram.com/zverevtaras"}/>
-                    <IconWitchText icon={linked} title={"Linked In"} link={"https://www.linkedin.com/in/taras-zverev-7545101a2"}/>
+                    <IconWitchText icon={instagram} title={"@zverevtaras"}
+                                   link={"https://www.instagram.com/zverevtaras"}/>
+                    <IconWitchText icon={linked} title={"Linked In"}
+                                   link={"https://www.linkedin.com/in/taras-zverev-7545101a2"}/>
                     <IconWitchText icon={git} title={"taras131"} link={"https://github.com/taras131"}/>
-
                 </ul>
+                <a href={cv} download={cv}>
+                    Download CV
+                </a>
             </Wrapper>
         </Modal>
     );
@@ -46,8 +51,23 @@ const Wrapper = styled.div`
 
     & > ul {
         width: 100%;
+
         & > li {
             font-size: 18px;
+        }
+    }
+
+    & > a {
+        border-radius: 8px;
+        border: none;
+        padding: 15px;
+        color: white;
+        background-color: black;
+        cursor: pointer;
+        transition: .4s;
+
+        &:hover {
+            background-color: #1b1c2f;
         }
     }
 `;
@@ -60,11 +80,12 @@ const PhotoContainer = styled.div`
     background-size: cover;
     position: relative;
     margin-top: 30px;
+
     & > img {
-       position: absolute;
+        position: absolute;
         width: 220px;
         height: 220px;
-       bottom: -35px;
+        bottom: -35px;
         left: -35px;
     }
 `;

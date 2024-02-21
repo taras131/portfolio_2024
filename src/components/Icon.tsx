@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import sprite from "../accest/icons/sprite.svg";
+import sprite from "../assets/icons/sprite.svg";
 import styled from "styled-components";
 
 type IProps = {

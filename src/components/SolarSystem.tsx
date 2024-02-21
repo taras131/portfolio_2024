@@ -1,13 +1,13 @@
 import React from 'react';
 import styled, {keyframes} from "styled-components";
 import {SolarSystemPlanet} from "./SolarSystemPlanet";
-import earth from "../accest/img/earth.png"
-import mars from "../accest/img/mars.png"
-import venus from "../accest/img/venus.png"
-import mercury from "../accest/img/mercury.png"
-import jupiter from "../accest/img/jupiter.png"
-import uran from "../accest/img/uran.png"
-import moon from "../accest/img/moon.png"
+import earth from "../assets/img/earth.png"
+import mars from "../assets/img/mars.png"
+import venus from "../assets/img/venus.png"
+import mercury from "../assets/img/mercury.png"
+import jupiter from "../assets/img/jupiter.png"
+import uran from "../assets/img/uran.png"
+import moon from "../assets/img/moon.png"
 
 export const SolarSystem = () => {
     return (

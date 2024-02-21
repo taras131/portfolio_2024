@@ -45,6 +45,7 @@ const Wrapper = styled.div`
     max-width: 100%;
     border-radius: 8px;
     background: #1C1C21;
+    opacity: .9;
     z-index: 9999;
     position: fixed;
     top: 50%;
@@ -68,6 +69,11 @@ const Wrapper = styled.div`
         background-color: inherit;
         border: none;
         color: white;
+        font-size: 24px;
+
+        &:hover {
+            color: #43b2b2;
+        }
     }
 `;
 

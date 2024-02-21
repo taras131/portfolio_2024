@@ -1,7 +1,7 @@
 import React, {FC, RefObject, useEffect, useRef, useState} from 'react';
 import styled, {css} from "styled-components";
 import {skills, works} from "../utils/consts";
-import sprite from "../accest/icons/sprite.svg";
+import sprite from "../assets/icons/sprite.svg";
 import {PortfolioWorksItem} from "../components/PortfolioWorksItem";
 import {PortfolioWorkDescription} from "../components/PortfolioWorkDescription";
 import {SkillItem} from "../components/SkillItem";

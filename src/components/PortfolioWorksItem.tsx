@@ -2,7 +2,7 @@ import React, {FC, useEffect, useRef, useState} from 'react';
 import {IWork} from "../models/iWorks";
 import styled, {css, keyframes} from "styled-components";
 import {works} from "../utils/consts";
-import sprite from "../accest/icons/sprite.svg";
+import sprite from "../assets/icons/sprite.svg";
 import {Paginator} from "./Paginator";
 import {VerticalSliderButton} from "./VerticalSliderButton";
 

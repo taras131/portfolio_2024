@@ -1,18 +1,17 @@
-import supply_1 from "../accest/img/supply_1.bmp"
-import supply_2 from "../accest/img/supply_2.jpg"
-import supply_3 from "../accest/img/supply_3.jpg"
-import troubleshooting_1 from "../accest/img/troubleshooting_1.jpg"
-import troubleshooting_2 from "../accest/img/troubleshooting_2.jpg"
-import burger_1 from "../accest/img/burger_1.bmp"
-import burger_2 from "../accest/img/burger_2.bmp"
-import burger_3 from "../accest/img/burger_3.bmp"
+import supply_1 from "../assets/img/supply_1.bmp"
+import supply_2 from "../assets/img/supply_2.jpg"
+import supply_3 from "../assets/img/supply_3.jpg"
+import troubleshooting_1 from "../assets/img/troubleshooting_1.jpg"
+import troubleshooting_2 from "../assets/img/troubleshooting_2.jpg"
+import burger_1 from "../assets/img/burger_1.bmp"
+import burger_2 from "../assets/img/burger_2.bmp"
+import burger_3 from "../assets/img/burger_3.bmp"
 import {IWork} from "../models/iWorks";
 import {IHistory} from "../models/iHistory";
 import {INavigation} from "../models/iNavigation";
 
 
-export const mainSectionDescriptionText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
-    "Et, volutpat feugiat placerat lobortis. Natoque rutrum semper sed suspendisse nunc lectus."
+export const mainSectionDescriptionText = "I am developing SPAs using React, utilizing Typescript, Redux, Toolkit, Material UI, and Styled Components. I have experience working in teams using Git and Jira."
 
 export const fileNames = ["MainSection.tsx", "CodeFragment.tsx", "SolarSystem.tsx", " CodeLine.tsx"]
 export const works: IWork [] = [
