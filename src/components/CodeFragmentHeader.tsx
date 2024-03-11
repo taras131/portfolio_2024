@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, memo} from 'react';
 import styled, {css} from "styled-components";
 import {fileNames} from "../utils/consts";
 
@@ -7,7 +7,7 @@ interface IProps {
     changeActiveFile: (fileName: string) => () => void
 }
 
-export const CodeFragmentHeader: FC<IProps> = ({activeFile, changeActiveFile}) => {
+export const CodeFragmentHeader: FC<IProps> = memo(({activeFile, changeActiveFile}) => {
     const fileList = fileNames.map(fileName => {
         return (
             <FileBox isActive={fileName === activeFile}
@@ -23,7 +23,7 @@ export const CodeFragmentHeader: FC<IProps> = ({activeFile, changeActiveFile}) =
             {fileList}
         </Wrapper>
     );
-};
+});
 
 
 const Wrapper = styled.div`

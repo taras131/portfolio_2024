@@ -1,9 +1,14 @@
+export interface IDoubleLanguageText {
+    en: string,
+    ru: string
+}
+
 export interface IHistory  {
     id: number,
-    name: string,
-    role: string,
-    discipline: string,
-    description: string,
-    dateStart: string,
-    dateFinish: string
+    name: IDoubleLanguageText,
+    role: IDoubleLanguageText,
+    discipline: IDoubleLanguageText,
+    description: IDoubleLanguageText,
+    dateStart: IDoubleLanguageText,
+    dateFinish: IDoubleLanguageText
 }

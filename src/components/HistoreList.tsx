@@ -1,25 +1,38 @@
 import React, {FC} from 'react';
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {HistoryListItem} from "./HistoryListItem";
 import {IHistory} from "../models/iHistory";
 
 type TProps = {
     history: IHistory []
+    isShow: boolean
 }
 
-export const HistoryList: FC<TProps> = ({history}) => {
+export const HistoryList: FC<TProps> = ({history, isShow}) => {
     const historyList = history.map(historyItem => (<HistoryListItem key={historyItem.id}
                                                                      historyItem={historyItem}/>))
     return (
-        <Wrapper>
+        <Wrapper isShow={isShow}>
             {historyList}
         </Wrapper>
     );
 };
 
-const Wrapper = styled.ul`
-  margin-top: 30px;
 
+interface IWrapperProps {
+    isShow: boolean
+}
+
+const Wrapper = styled.ul<IWrapperProps>`
+  margin-top: 30px;
+  opacity: 0;
+  transition: .7s;
+  filter: blur(10px);
+
+  ${props => props.isShow && css`
+    opacity: 1;
+    filter: blur(0);
+  `}
   li:not(:last-child)::after {
     content: "";
     display: block;
@@ -29,7 +42,7 @@ const Wrapper = styled.ul`
     right: 40px;
     bottom: 0;
     background-color: ${({theme}) => theme.colors.backgroundSecondary};
-    @media screen and (max-width: 768px){
+    @media screen and (max-width: 768px) {
       left: 0;
       right: 0;
     }

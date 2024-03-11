@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, memo, useEffect, useState} from 'react';
 import {CodeFragmentFunction} from "./CodeFragmentFunction";
 import {Tag} from "./Tag";
 import {CodeLine} from "./CodeLine";
@@ -6,7 +6,7 @@ import {CodeLine} from "./CodeLine";
 interface IProps {
     myName: string;
 }
-const CodeFragmentFileMainSection:FC<IProps> = ({myName}) => {
+const CodeFragmentFileMainSection:FC<IProps> = memo(({myName}) => {
     const [cursorVisible, setCursorVisible] = useState(true);
     useEffect(() => {
         const interval = setInterval(() => {
@@ -27,6 +27,6 @@ const CodeFragmentFileMainSection:FC<IProps> = ({myName}) => {
             <Tag name={"Wrapper"} type={"close"} tabCount={2} isNewLine/>
         </CodeFragmentFunction>
     );
-};
+});
 
 export default CodeFragmentFileMainSection;

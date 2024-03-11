@@ -1,7 +1,12 @@
+import {IDoubleLanguageText} from "./iHistory";
+
 export interface IWork {
     id: number,
     title: string,
-    description: string,
+    description: IDoubleLanguageText,
+    achievements: IDoubleLanguageText
     img: string [],
-    skills: string []
+    skills: string [],
+    git: string,
+    webSite?: string
 }

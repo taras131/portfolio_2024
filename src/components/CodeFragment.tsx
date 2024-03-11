@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, memo, useCallback, useEffect, useState} from 'react';
 import styled from "styled-components";
 import {LaptopImitation} from "./LaptopImitation";
 import {Tag} from "./Tag";
@@ -16,14 +16,14 @@ interface IProps {
     myName: string;
 }
 
-export const CodeFragment: FC<IProps> = ({myName}) => {
+export const CodeFragment: FC<IProps> = memo(({myName}) => {
     const [activeFile, setActiveFile] = useState(fileNames[0]);
     const [visibleCode, setVisibleCode] = useState(<CodeFragmentFileMainSection myName={myName}/>);
-    const changeActiveFile = (fileName: string) => () => {
+    const changeActiveFile = useCallback((fileName: string) => () => {
         if (activeFile !== fileName) {
             setActiveFile(fileName)
         }
-    }
+    },[activeFile])
     useEffect(() => {
         switch (activeFile) {
             case fileNames[1]:
@@ -53,7 +53,7 @@ export const CodeFragment: FC<IProps> = ({myName}) => {
         </LaptopImitation>
 
     );
-};
+});
 
 const Wrapper = styled.div`
     background-color: ${({theme}) => theme.colors.backgroundSecondary};

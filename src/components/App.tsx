@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {GlobalStyle} from "../styles/global";
 import {theme} from "../styles/theme";
 import styled, {ThemeProvider} from "styled-components";
@@ -10,6 +10,9 @@ import {EducationSection} from "../sections/EducationSection";
 import {WorkSection} from "../sections/WorkSection";
 import {navigation} from "../utils/consts";
 import {Contacts} from "./Contacts";
+import {LanguageProvider} from "./LanguageContext";
+import {SelectLanguage} from "./SelectLanguage";
+import {DiplomasSections} from "../sections/DiplomasSections";
 
 export const App = () => {
     const [activeId, setActiveId] = useState(navigation[0].id)
@@ -17,7 +20,7 @@ export const App = () => {
     const mainRef = useRef<HTMLHeadingElement>(null);
     const educationRef = useRef<HTMLHeadingElement>(null);
     const portfolioRef = useRef<HTMLHeadingElement>(null);
-    const handleActiveChange = (id: number) => () => {
+    const handleActiveChange = useCallback((id: number) => () => {
         switch (id) {
             case navigation[0].id:
                 if (mainRef.current) mainRef.current.scrollIntoView({behavior: "smooth"});
@@ -28,10 +31,11 @@ export const App = () => {
             case navigation[2].id:
                 if (educationRef.current) educationRef.current.scrollIntoView({behavior: "smooth"});
                 break;
-
+            default:
+                break;
         }
-        setActiveId(id)
-    }
+        setActiveId(id);
+    }, [navigation, mainRef, portfolioRef, educationRef, setActiveId]);
     const updateActiveId = () => {
         if (mainRef && mainRef.current
             && portfolioRef && portfolioRef.current
@@ -69,34 +73,38 @@ export const App = () => {
         setShowContactsModal(false)
         document.body.style.overflow = 'visible';
     }
-    const openContactsModal = () => {
+    const openContactsModal = useCallback(() => {
         setShowContactsModal(true)
         document.body.style.overflow = 'hidden';
-    }
+    }, [setShowContactsModal])
     return (
-        <ThemeProvider theme={theme}>
-            <AppWrapper>
-                <Header activeId={activeId}
-                        handleNavItemClick={handleActiveChange}
-                        openContactsModal={openContactsModal}/>
-                <MainSection navRef={mainRef}/>
-                <PortfolioSection navRef={portfolioRef}/>
-                <EducationSection navRef={educationRef}/>
-                <WorkSection/>
-                <GlobalStyle/>
-                <StarsSky/>
-            </AppWrapper>
-            {showContactsModal && (<Contacts closeContactsModal={closeContactsModal}/>)}
-        </ThemeProvider>
+        <LanguageProvider>
+            <ThemeProvider theme={theme}>
+                <AppWrapper>
+                    <Header activeId={activeId}
+                            handleNavItemClick={handleActiveChange}/>
+                    <MainSection navRef={mainRef} openContactsModal={openContactsModal}/>
+                    <PortfolioSection navRef={portfolioRef} isShow={activeId === 1}/>
+                    <EducationSection navRef={educationRef} isShow={activeId === 2}/>
+                    <WorkSection isShow={activeId === 2}/>
+                    <DiplomasSections/>
+                    <GlobalStyle/>
+                    <StarsSky/>
+                    <SelectLanguage/>
+                </AppWrapper>
+                {showContactsModal && (<Contacts closeContactsModal={closeContactsModal}/>)}
+            </ThemeProvider>
+        </LanguageProvider>
     );
 }
 
 const AppWrapper = styled.div`
-    width: 100%;
-    overflow: hidden;
-    color: ${({theme}) => theme.colors.textPrimary};
-    background-color: ${({theme}) => theme.colors.backgroundPrimary};
-    padding-bottom: 800px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  color: ${({theme}) => theme.colors.textPrimary};
+  background-color: ${({theme}) => theme.colors.backgroundPrimary};
+  padding-bottom: 70px;
 `;
 
 

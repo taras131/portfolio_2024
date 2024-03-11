@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
 import styled, {css} from "styled-components";
-import {Pagination} from "swiper/types/modules";
 
 interface IProps {
     activeId: number
