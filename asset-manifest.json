@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/portfolio_2024/static/js/main.7afa3c88.js",
+    "main.js": "/portfolio_2024/static/js/main.32d94a4e.js",
     "static/js/787.edb24343.chunk.js": "/portfolio_2024/static/js/787.edb24343.chunk.js",
     "static/media/shop_0.jpg": "/portfolio_2024/static/media/shop_0.c41c3e2bb8467f1f5795.jpg",
     "static/media/supply_1.jpg": "/portfolio_2024/static/media/supply_1.ca267c4de1c1b4870d8b.jpg",
@@ -23,7 +23,7 @@
     "static/media/burger_3.jpg": "/portfolio_2024/static/media/burger_3.6e16fb61416f5cc21e3c.jpg",
     "static/media/my_photo_1.png": "/portfolio_2024/static/media/my_photo_1.58387303ac85ddc3b3da.png",
     "static/media/burger_4.jpg": "/portfolio_2024/static/media/burger_4.4a19fb9a46afe8a97571.jpg",
-    "static/media/zverev_cv.pdf": "/portfolio_2024/static/media/zverev_cv.de449dced5c90ba51212.pdf",
+    "static/media/zverev_cv.pdf": "/portfolio_2024/static/media/zverev_cv.0a0ae7b231653311a2a2.pdf",
     "static/media/diplom_2.jpeg": "/portfolio_2024/static/media/diplom_2.2d07d2adb6a2e359942d.jpeg",
     "static/media/mercury.png": "/portfolio_2024/static/media/mercury.347e377392bf5a85251e.png",
     "static/media/mars.png": "/portfolio_2024/static/media/mars.425735293b2d79c1e1ae.png",
@@ -32,10 +32,10 @@
     "static/media/venus.png": "/portfolio_2024/static/media/venus.2dc60508a8c8a0d33cad.png",
     "static/media/sprite.svg": "/portfolio_2024/static/media/sprite.e93fa5f3a7bb0a685acca2c6c2dab8ef.svg",
     "index.html": "/portfolio_2024/index.html",
-    "main.7afa3c88.js.map": "/portfolio_2024/static/js/main.7afa3c88.js.map",
+    "main.32d94a4e.js.map": "/portfolio_2024/static/js/main.32d94a4e.js.map",
     "787.edb24343.chunk.js.map": "/portfolio_2024/static/js/787.edb24343.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.7afa3c88.js"
+    "static/js/main.32d94a4e.js"
   ]
 }
