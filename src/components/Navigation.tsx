@@ -12,7 +12,8 @@ export const Navigation: FC<IProps> = ({activeId, handleNavItemClick}) => {
     const {language} = useContext(LanguageContext);
     const linkList = navigation.map(nav => (
         <NavItem key={nav.id} onClick={handleNavItemClick(nav.id)} isActive={activeId === nav.id}>
-            {nav.title[language]}
+            <span>{nav.title[language]}</span>
+            <img src={nav.icon} alt={nav.title[language]}/>
         </NavItem>))
     return (
         <NavWrapper>
@@ -66,6 +67,7 @@ const NavItem = styled.li<INavItem>`
     color: ${({theme}) => theme.colors.textPrimary};
     font-weight: 600;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #007bff, 0 0 20px #007bff, 0 0 25px #007bff, 0 0 30px #007bff, 0 0 35px #007bff;
+
     &::after {
       content: "";
       display: block;
@@ -79,6 +81,19 @@ const NavItem = styled.li<INavItem>`
       animation: ${itemAnimation} .4s linear;
     }
   `}
+  & > img {
+    width: 24px;
+    height: 24px;
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  & > span {
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
 `;
 
 

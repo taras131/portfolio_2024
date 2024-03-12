@@ -1,17 +1,20 @@
-import React, {FC} from 'react';
+import React, {FC, RefObject, useContext} from 'react';
 import styled from "styled-components";
 import {HistoryList} from "../components/HistoreList";
 import {workHistory} from "../utils/consts";
+import {LanguageContext, languages} from "../components/LanguageContext";
 
 interface IProps {
     isShow: boolean
+    navRef: RefObject<HTMLHeadingElement>
 }
 
-export const WorkSection: FC<IProps> = ({isShow}) => {
+export const WorkSection: FC<IProps> = ({isShow,navRef}) => {
+    const {language} = useContext(LanguageContext);
     return (
-        <Wrapper>
+        <Wrapper ref={navRef}>
             <Container>
-                <h2>Work History:</h2>
+                <h2>{language === languages[0] ? "Work History" : "Работа"}:</h2>
                 <HistoryList history={workHistory} isShow={isShow}/>
             </Container>
         </Wrapper>

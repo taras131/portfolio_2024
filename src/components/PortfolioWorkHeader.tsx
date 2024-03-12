@@ -1,48 +1,22 @@
 import React, {FC, useContext} from 'react';
-import styled, {css, keyframes} from "styled-components";
+import styled, {css} from "styled-components";
 import {navigation} from "../utils/consts";
-import {LanguageContext, languages} from "./LanguageContext";
-import {IDoubleLanguageText} from "../models/iHistory";
+import {LanguageContext} from "./LanguageContext";
 
 interface IProps {
     title: string
-    description: IDoubleLanguageText,
-    achievements: IDoubleLanguageText,
-    skills: string []
-    isShow: boolean
 }
 
-export const PortfolioWorkHeader: FC<IProps> = ({title,
-                                                    description,
-                                                    achievements,
-                                                    skills,
-                                                    isShow}) => {
+export const PortfolioWorkHeader: FC<IProps> = ({title}) => {
     const {language} = useContext(LanguageContext);
-    const skillsList = skills.map(skill => <li key={skill}>{skill},</li>)
     return (
         <Wrapper>
             <div>
                 <h2>{navigation[1].title[language]}: <span>{title}</span></h2>
-                <Container isShow={isShow} key={title}>
-                    <div>
-                        <span>{language === languages[0] ? "Description" : "Описание"}: </span>
-                        <p>{description[language]}</p>
-                    </div>
-                    <div>
-                        <span>{language === languages[0] ? "Achievement" : "Достижения"}: </span>
-                        <p>{achievements[language]}</p>
-                    </div>
-                    <div>
-                        <span>{language === languages[0] ? "Technologies" : "Технологии"}: </span>
-                        <Skills>{skillsList}</Skills>
-                    </div>
-                </Container>
-
             </div>
         </Wrapper>
     );
 };
-
 
 const Wrapper = styled.div`
   max-width: 1440px;
@@ -51,11 +25,7 @@ const Wrapper = styled.div`
   @media screen and (max-width: 1230px) {
     padding: 15px;
   }
-
-  & > h2 {
-    z-index: 200;
-  }
-
+  
   h2 > span {
     font-weight: 500;
     color: ${({theme}) => theme.colors.textSecondary};
@@ -78,7 +48,6 @@ const Container = styled.div<IContainerProps>`
     opacity: 1;
     filter: blur(0);
   `}
-  
   & > div {
     padding: 15px;
     display: grid;
@@ -112,7 +81,7 @@ const Container = styled.div<IContainerProps>`
     font-size: 20px;
     font-weight: 500;
     @media screen and (max-width: 1230px) {
-     padding-bottom: 20px;
+      padding-bottom: 20px;
     }
   }
 

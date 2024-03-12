@@ -27,11 +27,13 @@ const Wrapper = styled.ul<IWrapperProps>`
   margin-top: 30px;
   opacity: 0;
   transition: .7s;
+  transform: translateY(40px);
   filter: blur(10px);
 
   ${props => props.isShow && css`
     opacity: 1;
     filter: blur(0);
+    transform: translateY(0);
   `}
   li:not(:last-child)::after {
     content: "";

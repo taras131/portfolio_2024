@@ -20,6 +20,7 @@ export const App = () => {
     const mainRef = useRef<HTMLHeadingElement>(null);
     const educationRef = useRef<HTMLHeadingElement>(null);
     const portfolioRef = useRef<HTMLHeadingElement>(null);
+    const workRef = useRef<HTMLHeadingElement>(null);
     const handleActiveChange = useCallback((id: number) => () => {
         switch (id) {
             case navigation[0].id:
@@ -31,19 +32,24 @@ export const App = () => {
             case navigation[2].id:
                 if (educationRef.current) educationRef.current.scrollIntoView({behavior: "smooth"});
                 break;
+            case navigation[3].id:
+                if (workRef.current) workRef.current.scrollIntoView({behavior: "smooth"});
+                break;
             default:
                 break;
         }
         setActiveId(id);
-    }, [navigation, mainRef, portfolioRef, educationRef, setActiveId]);
+    }, [navigation, mainRef, portfolioRef, educationRef,workRef, setActiveId]);
     const updateActiveId = () => {
         if (mainRef && mainRef.current
             && portfolioRef && portfolioRef.current
-            && educationRef && educationRef.current) {
+            && educationRef && educationRef.current
+            && workRef && workRef.current) {
             const mainBorderTopY: number = Math.abs(mainRef.current.getBoundingClientRect().top)
             const portfolioBorderTopY: number = Math.abs(portfolioRef.current.getBoundingClientRect().top)
             const educationBorderTopY: number = Math.abs(educationRef.current.getBoundingClientRect().top)
-            const BordersTopYArr = [mainBorderTopY, educationBorderTopY, portfolioBorderTopY]
+            const workBorderTopY: number = Math.abs(workRef.current.getBoundingClientRect().top)
+            const BordersTopYArr = [mainBorderTopY, educationBorderTopY, portfolioBorderTopY, workBorderTopY]
             const minValue = Math.min.apply(null, BordersTopYArr)
             switch (minValue) {
                 case mainBorderTopY:
@@ -54,6 +60,9 @@ export const App = () => {
                     break;
                 case educationBorderTopY:
                     setActiveId(navigation[2].id)
+                    break;
+                case workBorderTopY:
+                    setActiveId(navigation[3].id)
                     break;
             }
         }
@@ -84,10 +93,10 @@ export const App = () => {
                     <Header activeId={activeId}
                             handleNavItemClick={handleActiveChange}/>
                     <MainSection navRef={mainRef} openContactsModal={openContactsModal}/>
-                    <PortfolioSection navRef={portfolioRef} isShow={activeId === 1}/>
-                    <EducationSection navRef={educationRef} isShow={activeId === 2}/>
-                    <WorkSection isShow={activeId === 2}/>
-                    <DiplomasSections/>
+                    <PortfolioSection navRef={portfolioRef} isShow={activeId >= 1}/>
+                    <EducationSection navRef={educationRef} isShow={activeId >= 2}/>
+                    <WorkSection navRef={workRef} isShow={activeId >= 3}/>
+                    <DiplomasSections isShow={activeId >= 3}/>
                     <GlobalStyle/>
                     <StarsSky/>
                     <SelectLanguage/>

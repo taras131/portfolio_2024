@@ -1,10 +1,10 @@
 import React, {FC, RefObject, useCallback, useEffect, useState} from 'react';
 import styled, {css} from "styled-components";
 import {works} from "../utils/consts";
-import {PortfolioWorkLinks} from "../components/PortfolioWorkLinks";
-import {PortfolioWorkSkillsList} from "../components/PortfolioWorkSkillsList";
 import {PortfolioWorkHeader} from "../components/PortfolioWorkHeader";
 import {Slider} from "../components/Slider";
+import {PortfolioDescription} from "../components/PortfolioDescription";
+import {Paginator} from "../components/Paginator";
 
 interface IProps {
     navRef: RefObject<HTMLHeadingElement>
@@ -47,11 +47,7 @@ export const PortfolioSection: FC<IProps> = ({navRef, isShow}) => {
     }, [setActiveWorkId])
     return (
         <Wrapper ref={navRef}>
-            <PortfolioWorkHeader title={activeWork.title}
-                                 description={activeWork.description}
-                                 achievements={activeWork.achievements}
-                                 skills={activeWork.skills}
-                                 isShow={isShow}/>
+            <PortfolioWorkHeader title={activeWork.title}/>
             <Slider activeWorkId={activeWorkId}
                     handlePrevWorkClick={handlePrevWorkClick}
                     handleNextWorkClick={handleNextWorkClick}
@@ -60,12 +56,17 @@ export const PortfolioSection: FC<IProps> = ({navRef, isShow}) => {
                     standardSlideItemWidth={standardSlideItemWidth}
                     handleSetActiveWorkId={handleSetActiveWorkId}
             />
-            <PortfolioWorkLinks width={activeSlideItemWidth}
-                                startingMargin={startingMargin}
-                                paginationArr={paginationArr}
-                                activeWorkId={activeWorkId}
-                                activeWork={activeWork}
-                                handleSetActiveWorkId={handleSetActiveWorkId}/>
+            <PaginatorWrapper>
+                <Paginator paginationArr={paginationArr}
+                           activeId={activeWorkId}
+                           handleSetActiveId={handleSetActiveWorkId}/>
+            </PaginatorWrapper>
+            <PortfolioDescription description={activeWork.description}
+                                  achievements={activeWork.achievements}
+                                  skills={activeWork.skills}
+                                  isShow={isShow}
+                                  gitLink={activeWork.git}
+                                  webLink={activeWork.webSite}/>
         </Wrapper>
     );
 };
@@ -74,6 +75,14 @@ const Wrapper = styled.section`
   z-index: 200;
   padding-top: 60px;
 `;
+
+const PaginatorWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+`
 
 
 

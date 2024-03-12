@@ -1,7 +1,8 @@
-import React, {FC, RefObject} from 'react';
+import React, {FC, RefObject, useContext} from 'react';
 import styled from "styled-components";
 import {HistoryList} from "../components/HistoreList";
 import {educationHistory} from "../utils/consts";
+import {LanguageContext, languages} from "../components/LanguageContext";
 
 interface IProps {
     navRef: RefObject<HTMLHeadingElement>
@@ -9,10 +10,11 @@ interface IProps {
 }
 
 export const EducationSection: FC<IProps> = ({navRef, isShow}) => {
+    const {language} = useContext(LanguageContext);
     return (
         <Wrapper ref={navRef}>
             <Container>
-                <h2>Education History:</h2>
+                <h2>{language === languages[0] ? "Education History" : "Образование"}:</h2>
                 <HistoryList history={educationHistory} isShow={isShow}/>
             </Container>
         </Wrapper>

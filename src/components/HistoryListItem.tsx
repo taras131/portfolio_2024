@@ -36,9 +36,12 @@ const Wrapper = styled.li`
   grid-template-columns: 1fr 2fr;
   position: relative;
   z-index: 100;
-
   background-color: rgba(26, 28, 40, .6);
   backdrop-filter: blur(1px);
+  @media screen and (max-width: 1230px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
   }
@@ -67,6 +70,7 @@ const Description = styled.div`
 
   p {
     margin-top: 28px;
+    line-height: 1.4;
   }
 
   @media screen and (max-width: 768px) {

@@ -3,50 +3,56 @@ import styled, {css, keyframes} from "styled-components";
 
 interface IProps {
     title: string,
-    isActive?: boolean
+    index: number
 }
 
-export const SkillItem: FC<IProps> = memo(({title, isActive = false}) => {
+export const SkillItem: FC<IProps> = memo(({title, index}) => {
     return (
-        <Wrapper isActive={isActive}>
-            <h3>{title}</h3>
+        <Wrapper index={index}>
+            <span>{title}</span>
         </Wrapper>
     );
 });
 
-const flicker = keyframes`
+const animation = keyframes`
   0% {
-    text-shadow: 0 0 5px #00BFFF, 0 0 10px #3d5881, 0 0 10px #384c69; /* Начальное состояние свечения */
+    transform: translateY(100%);
+    opacity: 0;
   }
-  50% {
-    text-shadow: 0 0 2px #00BFFF, 0 0 5px #3d5881, 0 0 7px #384c69;
+  75% {
+    transform: translateY(-25%);
+    opacity: .75;
   }
   100% {
-    text-shadow: 0 0 5px #00BFFF, 0 0 10px #3d5881, 0 0 10px #384c69; /* Конечное состояние свечения */
+    transform: translateY(0);
+    opacity: 1;
   }
 `
 
 interface IWrapperProps {
-    isActive: boolean
+    index: number
 }
 
 const Wrapper = styled.li<IWrapperProps>`
   z-index: 100;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  transform: translateY(100%);
+  animation: ${animation} .6s ease;
+  animation-delay: ${props => props.index * .2 + "s"};
+  animation-fill-mode: forwards;
+  opacity: 0;
+  border-radius: 8px;
+  background-color: rgba(26, 28, 40, .6);
+  padding: 0 10px;
 
-  h3 {
-    font-size: calc((100vw - 410px) / (1280 - 410) * (20 - 16) + 16px);
-    color: #384c69;
-    text-shadow: 0 0 3px #384c69;
+  span {
+    font-size: 16px;
+    color: white;
     transition: .4s;
-    ${props => props.isActive && css`
-      color: white;
-      text-shadow: 0 0 5px #FFFFFF, 0 0 10px #00BFFF, 0 0 15px #384c69;
-      animation: ${flicker} 3s infinite;
-    `}
+
   }
 `;
 

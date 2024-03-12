@@ -10,6 +10,10 @@ import burger_3 from "../assets/img/burger_3.bmp"
 import flower_1 from "../assets/img/shop_1.jpg"
 import flower_2 from "../assets/img/shop_2.jpg"
 import flower_3 from "../assets/img/shop_3.jpg"
+import home from "../assets/icons/home.png"
+import portfolio from "../assets/icons/portfolio.png"
+import education from "../assets/icons/education.png"
+import work from "../assets/icons/work.png"
 import {IWork} from "../models/iWorks";
 import {IDoubleLanguageText, IHistory} from "../models/iHistory";
 import {INavigation} from "../models/iNavigation";
@@ -109,7 +113,7 @@ export const works: IWork [] = [
             ru: "При написании данного сервера я освоил  библиотеку Express и научился создавать базу данных с помощью " +
                 "Sequelize. Что позволило мне посмотреть на разработку с новой стороны, - со стороны бекенда."
         }, img: [flower_1, flower_2, flower_3],
-        skills: ["React", "Redux", "Node js", "Express", "Jsonwebtoken", "Sequelize"],
+        skills: ["React", "Redux", "Node js", "Express", "Jsonwebtoken", "Sequelize", "MobX"],
         git: "https://github.com/taras131/flowers_shop_0.2/tree/main/server"
     },
     {
@@ -127,12 +131,13 @@ export const works: IWork [] = [
             ru: "Я получил навыки работы с библиотекой Styled Components, посмотрел на её плюсы и минусы и " +
                 "потренировался в создании несложных анимаций."
         }, img: [portfolio_1],
-        skills: ["React", "Styled Components", "JavaScript"],
+        skills: ["React", "Styled Components","JavaScript"],
         git: "https://github.com/taras131/portfolio_2024"
     },
 ]
 
-export const skills = ["React", "Typescript", "Redux", "Toolkit", "JavaScript", "Styled Component", "Material UI", "Node js"]
+export const skills = ["React", "Typescript", "Redux", "Toolkit", "MobX", "Styled Component", "Material UI", "SCSS",
+    "Node js", "Express","JavaScript", "HTML", "CSS", "Git", "Jira", "Slack"]
 
 export const educationHistory: IHistory [] = [
     {
@@ -204,7 +209,8 @@ export const workHistory: IHistory [] = [
 ]
 
 export const navigation: INavigation [] = [
-    {id: 0, title: {en: "Main", ru: "Главная"}},
-    {id: 1, title: {en: "Portfolio", ru: "Портфолио"}},
-    {id: 2, title: {en: "Education", ru: "Образование"}},
+    {id: 0, icon: home, title: {en: "Main", ru: "Главная"}},
+    {id: 1, icon: portfolio, title: {en: "Portfolio", ru: "Портфолио"}},
+    {id: 2, icon: education, title: {en: "Education", ru: "Образование"}},
+    {id: 3, icon: work, title: {en: "Work", ru: "Работа"}},
 ]

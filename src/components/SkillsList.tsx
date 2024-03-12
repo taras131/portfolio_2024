@@ -3,13 +3,12 @@ import {skills} from "../utils/consts";
 import {SkillItem} from "./SkillItem";
 import styled from "styled-components";
 
-interface IProps {
-    activeWorkSkills: string []
-}
 
-export const PortfolioWorkSkillsList:FC<IProps> = ({activeWorkSkills}) => {
-    const skillSList = skills.map(skill => (<SkillItem key={skill} title={skill}
-                                                       isActive={activeWorkSkills.includes(skill)}/>))
+
+export const SkillsList: FC = () => {
+    const skillSList = skills.map((skill, index) => (<SkillItem key={skill}
+                                                                title={skill}
+                                                                index={index+1}/>))
     return (
         <Wrapper>
             {skillSList}
@@ -22,7 +21,7 @@ const Wrapper = styled.ul`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
   flex-wrap: wrap;
-  width: 100%;
+  gap: 15px;
+ overflow-y: hidden;
 `

@@ -6,6 +6,7 @@ import {mainSectionDescriptionText} from "../utils/consts";
 import {Button} from "../components/Button";
 import {LanguageContext, languages} from "../components/LanguageContext";
 import {IDoubleLanguageText} from "../models/iHistory";
+import {SkillsList} from "../components/SkillsList";
 
 const texts = {
     en: ["Шёь Е", "I’m Taras Zverev"],
@@ -73,6 +74,7 @@ export const MainSection: FC<IProps> = memo(({navRef, openContactsModal}) => {
                     <SolarSystem/>
                     <CodeFragment myName={displayedText}/>
                 </Container>
+                <SkillsList/>
             </Wrapper>
         </div>
     );
@@ -84,9 +86,12 @@ const Wrapper = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 100px;
   width: 100%;
   @media screen and (max-width: 500px) {
-    padding: 0 10px;
+    padding: 90px 20px;
+    gap: 40px;
   }
 `;
 
@@ -104,15 +109,21 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
   }
-
+  @media screen and (max-width: 500px) {
+    gap: 40px;
+    
+  }
 `
 
 const contactAnimation = keyframes`
-  from {
+  0% {
     box-shadow: 0 0 5px #e3dfd8, 0 0 10px #e7ca95, 0 0 13px orange;
   }
-  to {
+  50% {
     box-shadow: 0 0 10px orange, 0 0 20px orange, 0 0 25px orange;
+  }
+  100% {
+    box-shadow: 0 0 5px #e3dfd8, 0 0 10px #e7ca95, 0 0 13px orange;
   }
 `
 
@@ -123,7 +134,6 @@ const Info = styled.div`
   h1, span {
     font-weight: 700;
     font-size: calc((100vw - 410px) / (1280 - 410) * (52 - 34) + 34px);
-
   }
 
   & > span {
@@ -132,9 +142,16 @@ const Info = styled.div`
 
   h1 {
     margin-top: 50px;
+    line-height: 2;
 
     & > span {
       color: ${({theme}) => theme.colors.textSuccess};
+    }
+    @media screen and (max-width: 1030px) {
+      line-height: 1.6;
+    }
+    @media screen and (max-width: 500px) {
+      line-height: 1.2;
     }
   }
 
@@ -152,11 +169,15 @@ const Info = styled.div`
     padding: 10px 20px;
     border-radius: 8px;
     transition: .4s;
-    animation: ${contactAnimation} 10s linear infinite;
+    animation: ${contactAnimation} 10s infinite;
 
     &:hover {
       box-shadow: 0 0 5px #fff, 0 0 10px #c2a267, 0 0 15px #d5911c, 0 0 20px #f59f00, 0 0 25px orange, 0 0 30px orange, 0 0 35px orange;
       transform: rotate(10deg);
+    }
+
+    @media screen and (max-width: 500px) {
+      margin-top: 40px;
     }
   }
 `;

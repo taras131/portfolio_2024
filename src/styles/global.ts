@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     color: red;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    font-family: -apple-system, 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -40,7 +40,4 @@ export const GlobalStyle = createGlobalStyle`
     z-index: 100;
   }
   
-  h1 {
-    line-height: 170%;
-  }
 `
