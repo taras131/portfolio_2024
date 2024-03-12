@@ -1,5 +1,5 @@
 import React, {FC, memo} from 'react';
-import styled, {css, keyframes} from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 interface IProps {
     title: string,

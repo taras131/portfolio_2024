@@ -4,7 +4,7 @@ import styled, {keyframes} from "styled-components";
 import {SolarSystem} from "../components/SolarSystem";
 import {mainSectionDescriptionText} from "../utils/consts";
 import {Button} from "../components/Button";
-import {LanguageContext, languages} from "../components/LanguageContext";
+import {LanguageContext} from "../contexts/LanguageContext";
 import {IDoubleLanguageText} from "../models/iHistory";
 import {SkillsList} from "../components/SkillsList";
 
@@ -37,7 +37,7 @@ export const MainSection: FC<IProps> = memo(({navRef, openContactsModal}) => {
             }
         }, 200);
         return () => clearTimeout(timeout);
-    }, [texts, currentTextIndex, currentIndex, displayedText]);
+    }, [currentTextIndex, currentIndex, displayedText, language]);
 
     useEffect(() => {
         if (currentIndex === texts[language][currentTextIndex].length) {
@@ -51,7 +51,7 @@ export const MainSection: FC<IProps> = memo(({navRef, openContactsModal}) => {
             }, 100);
             return () => clearTimeout(timeout);
         }
-    }, [displayedText, texts, currentTextIndex, currentIndex]);
+    }, [displayedText, currentTextIndex, currentIndex, language]);
     useEffect(() => {
         setCurrentIndex(0);
         setCurrentTextIndex(0);
@@ -67,7 +67,7 @@ export const MainSection: FC<IProps> = memo(({navRef, openContactsModal}) => {
                         <p>
                             {mainSectionDescriptionText[language]}
                         </p>
-                        <Button variant={"text"} onClick={openContactsModal}>
+                        <Button onClick={openContactsModal}>
                             {buttonContactText[language]}
                         </Button>
                     </Info>

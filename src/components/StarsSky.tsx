@@ -14,13 +14,14 @@ export const StarsSky = memo(() => {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
-    const stars = [];
-    for (let i = 0; i < 333; i++) {
+    const stars_1 = [];
+    const stars_2 = [];
+    for (let i = 0; i < 150; i++) {
         const x = generateRandomValue(0, pageWidth);
-        const y = generateRandomValue(0, 4000);
+        const y = generateRandomValue(0, 4700);
         const size = generateRandomValue(1, 3);
-        stars.push(
-            <Star
+        stars_1.push(
+            <Star1
                 key={i}
                 style={{
                     top: y,
@@ -29,15 +30,30 @@ export const StarsSky = memo(() => {
                     height: size,
                     filter: i % 2 ? "blur(1px)" : "",
                 }}
-            >
-
-            </Star>
+            />);
+    }
+    for (let i = 0; i < 100; i++) {
+        const x = generateRandomValue(0, pageWidth);
+        const y = generateRandomValue(0, 4700);
+        const size = generateRandomValue(1, 3);
+        stars_2.push(
+            <Star2
+                key={i}
+                style={{
+                    top: y,
+                    left: x,
+                    width: size,
+                    height: size,
+                    filter: i % 2 ? "blur(1px)" : "",
+                    animationDuration: `${generateRandomValue(1,6)}s`
+                }}/>
         );
     }
 
     return (
         <Sky>
-            {stars}
+            {stars_1}
+            {stars_2}
         </Sky>
     );
 });
@@ -50,45 +66,32 @@ const Sky = styled.div`
 
 const starFlash = keyframes`
   0% {
-    box-shadow: 0 0 1px 0 rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
   }
   50% {
-    box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 3px 2px rgba(255, 255, 255, 0.8);
   }
   100% {
-    box-shadow: 0 0 1px 0 rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
   }
 `
 
 const Star = styled.div`
-  box-shadow: 0 0 1px 0 rgba(255, 255, 255, 0.5);
   border-radius: 50%;
   position: absolute;
   background-color: white;
+`
 
-
-  &::before, &::after {
-    content: " ";
-    border-radius: 50%;
-    background-color: white;
-    position: absolute;
-    box-shadow: 0 0 1px 0 rgba(255, 255, 255, 0.5);
-  }
-
-  &::before {
-    width: 2px;
-    height: 2px;
-    top: -80px;
-    left: -70px;
-  }
-
-  &::after {
-    width: 2px;
-    height: 2px;
-    filter: blur(2px);
-    top: 90px;
-    left: 70px;
-  }
+const Star1 = styled(Star)`
+  box-shadow: 0 0 1px 0 rgba(255, 255, 255, 0.5),
+  110px 230px 1px 1px aqua,
+    -270px -190px 2px 0 aqua,
+  -70px 90px 1px 0 #0094ff,
+  -210px 130px 1px 0 #b5ffff;
+`
+const Star2 = styled(Star)`
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
+  animation: ${starFlash} infinite;
 `
 
 

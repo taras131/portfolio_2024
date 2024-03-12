@@ -1,7 +1,5 @@
 import styled, {keyframes} from "styled-components";
 import React, {FC, memo} from 'react';
-import {CodeFragment} from "./CodeFragment";
-import Tilt from "react-parallax-tilt";
 
 interface IProps {
     children: React.ReactNode

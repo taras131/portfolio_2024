@@ -1,7 +1,7 @@
 import React, {FC, useContext} from 'react';
 import styled, {css, keyframes} from "styled-components";
 import {IDoubleLanguageText} from "../models/iHistory";
-import {LanguageContext, languages} from "./LanguageContext";
+import {LanguageContext, languages} from "../contexts/LanguageContext";
 
 interface IProps {
     description: IDoubleLanguageText,
@@ -20,15 +20,11 @@ export const PortfolioDescription: FC<IProps> = ({
     const skillsList = skills.map(skill => <li key={skill}>{skill},</li>)
     return (
         <Wrapper>
-            <Links isShow={isShow} key={description.ru}>
-
-                <a href={gitLink} target={"_blank"}>Git</a>
-
-
-                {webLink ? (<a href={webLink} target={"_blank"}>Site</a>) : (<span></span>)}
-
+            <Links key={description.ru}>
+                <a href={gitLink} target="_blank" rel="noreferrer">Git</a>
+                {webLink ? (<a href={webLink} target="_blank" rel="noreferrer">Site</a>) : (<span></span>)}
             </Links>
-            <Container isShow={isShow} key={description.en}>
+            <Container isshow={isShow} key={description.en}>
                 <div>
                     <span>{language === languages[0] ? "Description" : "Описание"}: </span>
                     <p>{description[language]}</p>
@@ -47,7 +43,7 @@ export const PortfolioDescription: FC<IProps> = ({
 };
 
 interface IContainerProps {
-    isShow: boolean
+    isshow: boolean
 }
 
 const animationLink = keyframes`
@@ -67,10 +63,9 @@ const Wrapper = styled.div`
   margin: 0 auto;
   max-width: 1440px;
   width: 100%;
- 
-`
+`;
 
-const Links = styled.div<IContainerProps>`
+const Links = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -128,7 +123,7 @@ const Container = styled.div<IContainerProps>`
   transform: translateY(40px);
   animation-delay: .4s;
   
-  ${props => props.isShow && css`
+  ${props => props.isshow && css`
     animation: ${animationDescription} .4s;
     animation-fill-mode: forwards;
   `}

@@ -1,6 +1,6 @@
-import React, {FC, memo, useCallback} from 'react';
-import {skills, works} from "../utils/consts";
-import {PortfolioWorksItem} from "./PortfolioWorksItem";
+import React, {FC, memo} from 'react';
+import {works} from "../utils/consts";
+import {PortfolioListItem} from "./PortfolioListItem";
 
 interface IProps {
     activeWorkId: number
@@ -19,11 +19,11 @@ export const PortfolioList: FC<IProps> = memo(({
         const handleClick = handlePortfolioClick(work.id)
         const isActive = activeWorkId === work.id
         const slideWidth = isActive ? activeSlideItemWidth : standardSlideItemWidth
-        return (<PortfolioWorksItem key={work.id}
-                                    work={work}
-                                    isActive={isActive}
-                                    slideWidth={slideWidth}
-                                    handlePortfolioClick={handleClick}/>)
+        return (<PortfolioListItem key={work.id}
+                                   work={work}
+                                   isActive={isActive}
+                                   slideWidth={slideWidth}
+                                   handlePortfolioClick={handleClick}/>)
     })
 
     return (

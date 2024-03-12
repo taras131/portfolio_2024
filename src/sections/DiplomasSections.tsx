@@ -2,7 +2,7 @@ import React, {FC, useContext} from 'react';
 import diploma_1 from "../assets/img/diplom_1.jpg";
 import diploma_2 from "../assets/img/diplom_2.jpeg";
 import styled, {css} from "styled-components";
-import {LanguageContext, languages} from "../components/LanguageContext";
+import {LanguageContext, languages} from "../contexts/LanguageContext";
 
 interface IProps {
     isShow: boolean
@@ -11,7 +11,7 @@ interface IProps {
 export const DiplomasSections: FC<IProps> = ({isShow}) => {
     const {language} = useContext(LanguageContext);
     return (
-        <Wrapper isShow = {isShow}>
+        <Wrapper isShow={isShow}>
             <h2>{language === languages[0] ? "Diplomas" : "Дипломы"}:</h2>
             <div>
                 <img src={diploma_1} alt="diploma 1"/>
@@ -25,7 +25,20 @@ const Wrapper = styled.div<IProps>`
   margin: 0 auto;
   max-width: 1440px;
   width: 100%;
-  padding-top: 70px;
+  padding: 70px 0;
+
+  & > h2 {
+    opacity: 0;
+    transition: .4s;
+    transform: translateY(40px);
+    filter: blur(10px);
+
+    ${props => props.isShow && css`
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
+    `}
+  }
 
   & > div {
     display: flex;
@@ -47,6 +60,7 @@ const Wrapper = styled.div<IProps>`
       transition: .7s;
       transform: translateY(40px);
       filter: blur(10px);
+      z-index: 100;
       ${props => props.isShow && css`
         opacity: 1;
         filter: blur(0);
@@ -56,6 +70,7 @@ const Wrapper = styled.div<IProps>`
 
     img:first-child {
       width: 60%;
+      transition-delay: .1s;
       @media screen and (max-width: 1000px) {
         width: 100%;
       }

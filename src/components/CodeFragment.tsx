@@ -1,12 +1,9 @@
 import React, {FC, memo, useCallback, useEffect, useState} from 'react';
 import styled from "styled-components";
 import {LaptopImitation} from "./LaptopImitation";
-import {Tag} from "./Tag";
-import {CodeLine} from "./CodeLine";
 import {CodeFragmentHeader} from "./CodeFragmentHeader";
 import {CodeFragmentLinesNumbers} from "./CodeFragmentLinesNumbers";
 import {fileNames} from "../utils/consts";
-import {CodeFragmentFunction} from "./CodeFragmentFunction";
 import CodeFragmentFileMainSection from "./CodeFragmentFileMainSection";
 import {CodeFragmentFileCodeFragment} from "./CodeFragmentFileCodeFragment";
 import {CodeFragmentFileSolarSystem} from "./CodeFragmentFileSolarSystem";

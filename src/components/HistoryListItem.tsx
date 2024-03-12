@@ -2,7 +2,7 @@ import React, {FC, useContext} from 'react';
 import styled from "styled-components";
 import {TextInBox} from "./TextInBox";
 import {IHistory} from "../models/iHistory";
-import {LanguageContext} from "./LanguageContext";
+import {LanguageContext} from "../contexts/LanguageContext";
 
 type TProps = {
     historyItem: IHistory
@@ -16,7 +16,7 @@ export const HistoryListItem: FC<TProps> = ({historyItem}) => {
                 <h3>{historyItem.name[language]}</h3>
                 <RoleAndDate>
                     <span>{historyItem.role[language]}</span>
-                    <TextInBox isWhite={true}>
+                    <TextInBox>
                         {`${historyItem.dateStart[language]} - ${historyItem.dateFinish[language]}`}
                     </TextInBox>
                 </RoleAndDate>
@@ -30,12 +30,12 @@ export const HistoryListItem: FC<TProps> = ({historyItem}) => {
 };
 
 const Wrapper = styled.li`
+  z-index: 100;
   min-height: 208px;
   padding: 30px;
   display: grid;
   grid-template-columns: 1fr 2fr;
   position: relative;
-  z-index: 100;
   background-color: rgba(26, 28, 40, .6);
   backdrop-filter: blur(1px);
   @media screen and (max-width: 1230px) {

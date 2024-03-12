@@ -1,9 +1,8 @@
 import React, {useContext} from 'react';
-import {LanguageContext, languages} from "./LanguageContext";
+import {LanguageContext, languages} from "../contexts/LanguageContext";
 import styled, {css, keyframes} from "styled-components";
 import {TLanguage} from "../models/iLanguage";
 import img from "../assets/img/mars.png"
-import {itemAnimation} from "./Navigation";
 
 export const SelectLanguage = () => {
     const {language, changeLanguage} = useContext(LanguageContext);

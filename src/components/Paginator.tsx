@@ -19,14 +19,14 @@ export const Paginator: FC<IProps> = ({
                                                                       onClick={handleSetActiveId(item)}
                                                                       isVerticalMode={isVerticalMode}/>))
     return (
-        <Wrapper isVerticalMode={isVerticalMode}>
+        <Wrapper isverticalmode={isVerticalMode}>
             {paginationList}
         </Wrapper>
     );
 };
 
 interface IWrapperProps {
-    isVerticalMode: boolean
+    isverticalmode: boolean
 }
 
 const Wrapper = styled.ul<IWrapperProps>`
@@ -35,7 +35,7 @@ const Wrapper = styled.ul<IWrapperProps>`
     justify-content: center;
     gap: 10px;
     z-index: 100;
-    ${props => props.isVerticalMode && css`
+    ${props => props.isverticalmode && css`
         flex-direction: column;
         gap: 20px;
     `};

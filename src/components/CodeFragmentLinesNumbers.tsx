@@ -15,12 +15,10 @@ export const CodeFragmentLinesNumbers = memo(() => {
 });
 
 const Wrapper = styled.div`
-  
   background-color: #3F3D3DFF;
   width: 25px;
   padding-left: 3px;
-
-
+  
   span {
     display: block;
     font-size: 11px;

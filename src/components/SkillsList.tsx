@@ -3,8 +3,6 @@ import {skills} from "../utils/consts";
 import {SkillItem} from "./SkillItem";
 import styled from "styled-components";
 
-
-
 export const SkillsList: FC = () => {
     const skillSList = skills.map((skill, index) => (<SkillItem key={skill}
                                                                 title={skill}

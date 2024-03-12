@@ -12,15 +12,14 @@ export const HistoryList: FC<TProps> = ({history, isShow}) => {
     const historyList = history.map(historyItem => (<HistoryListItem key={historyItem.id}
                                                                      historyItem={historyItem}/>))
     return (
-        <Wrapper isShow={isShow}>
+        <Wrapper isshow={isShow}>
             {historyList}
         </Wrapper>
     );
 };
 
-
 interface IWrapperProps {
-    isShow: boolean
+    isshow: boolean
 }
 
 const Wrapper = styled.ul<IWrapperProps>`
@@ -30,7 +29,7 @@ const Wrapper = styled.ul<IWrapperProps>`
   transform: translateY(40px);
   filter: blur(10px);
 
-  ${props => props.isShow && css`
+  ${props => props.isshow && css`
     opacity: 1;
     filter: blur(0);
     transform: translateY(0);

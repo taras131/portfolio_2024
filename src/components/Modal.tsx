@@ -1,4 +1,4 @@
-import React, {FC, useCallback, useEffect, KeyboardEvent} from 'react';
+import React, {FC, useCallback, useEffect} from 'react';
 import {ModalOverlay} from "./ModalOverlay";
 import ReactDOM from 'react-dom'
 import styled from "styled-components";

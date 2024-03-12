@@ -1,7 +1,7 @@
-import React, {FC, useContext, useState} from 'react';
+import React, {FC, useContext} from 'react';
 import styled, {css, keyframes} from "styled-components";
 import {navigation} from "../utils/consts";
-import {LanguageContext} from "./LanguageContext";
+import {LanguageContext} from "../contexts/LanguageContext";
 
 interface IProps {
     activeId: number
@@ -11,7 +11,7 @@ interface IProps {
 export const Navigation: FC<IProps> = ({activeId, handleNavItemClick}) => {
     const {language} = useContext(LanguageContext);
     const linkList = navigation.map(nav => (
-        <NavItem key={nav.id} onClick={handleNavItemClick(nav.id)} isActive={activeId === nav.id}>
+        <NavItem key={nav.id} onClick={handleNavItemClick(nav.id)} isactive={activeId === nav.id}>
             <span>{nav.title[language]}</span>
             <img src={nav.icon} alt={nav.title[language]}/>
         </NavItem>))
@@ -37,7 +37,7 @@ const NavWrapper = styled.nav`
 `;
 
 interface INavItem {
-    isActive: boolean
+    isactive: boolean
 }
 
 export const itemAnimation = keyframes`
@@ -62,12 +62,15 @@ const NavItem = styled.li<INavItem>`
   color: ${({theme}) => theme.colors.textSecondary};
   cursor: pointer;
 
-  ${props => props.isActive && css<INavItem>`
+  &:hover {
+    color: ${({theme}) => theme.colors.textPrimary};
+  }
+  
+  ${props => props.isactive && css<INavItem>`
     transition: .4s;
     color: ${({theme}) => theme.colors.textPrimary};
     font-weight: 600;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #007bff, 0 0 20px #007bff, 0 0 25px #007bff, 0 0 30px #007bff, 0 0 35px #007bff;
-
+    text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 8px #007bff, 0 0 12px #007bff, 0 0 16px #007bff, 0 0 20px #007bff, 0 0 25px #007bff;
     &::after {
       content: "";
       display: block;

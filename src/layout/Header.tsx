@@ -1,20 +1,22 @@
 import React, {FC, memo} from 'react';
 import styled from "styled-components";
-import {Button} from "../components/Button";
 import {Navigation} from "../components/Navigation";
-import {SelectLanguage} from "../components/SelectLanguage";
+import contacts from "../assets/icons/contacts.png"
 
 interface IProps {
     activeId: number
     handleNavItemClick: (id: number) => () => void
-
+    openContactsModal: () => void
 }
 
-export const Header: FC<IProps> = memo(({activeId, handleNavItemClick}) => {
+export const Header: FC<IProps> = memo(({activeId, handleNavItemClick, openContactsModal}) => {
     return (
         <AppHeader>
             <Container>
                 <Navigation activeId={activeId} handleNavItemClick={handleNavItemClick}/>
+                <ContactsButton onClick={openContactsModal}>
+                    <img src={contacts} alt="open Contacts Modal"/>
+                </ContactsButton>
             </Container>
         </AppHeader>
     );
@@ -39,3 +41,22 @@ const Container = styled.div`
   justify-content: space-between;
   min-height: 60px;
 `
+
+const ContactsButton = styled.button`
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+
+  & > img {
+    width: 28px;
+    height: 28px;
+    transition: .4s;
+    transform: rotate(136deg);
+  }
+  
+  &:hover{
+    img {
+      transform: rotate(0);
+    }
+  }
+`;

@@ -10,9 +10,10 @@ import {EducationSection} from "../sections/EducationSection";
 import {WorkSection} from "../sections/WorkSection";
 import {navigation} from "../utils/consts";
 import {Contacts} from "./Contacts";
-import {LanguageProvider} from "./LanguageContext";
+import {LanguageProvider} from "../contexts/LanguageContext";
 import {SelectLanguage} from "./SelectLanguage";
 import {DiplomasSections} from "../sections/DiplomasSections";
+import {Footer} from "../layout/Footer";
 
 export const App = () => {
     const [activeId, setActiveId] = useState(navigation[0].id)
@@ -39,7 +40,7 @@ export const App = () => {
                 break;
         }
         setActiveId(id);
-    }, [navigation, mainRef, portfolioRef, educationRef,workRef, setActiveId]);
+    }, [mainRef, portfolioRef, educationRef,workRef, setActiveId]);
     const updateActiveId = () => {
         if (mainRef && mainRef.current
             && portfolioRef && portfolioRef.current
@@ -91,12 +92,14 @@ export const App = () => {
             <ThemeProvider theme={theme}>
                 <AppWrapper>
                     <Header activeId={activeId}
-                            handleNavItemClick={handleActiveChange}/>
+                            handleNavItemClick={handleActiveChange}
+                            openContactsModal={openContactsModal}/>
                     <MainSection navRef={mainRef} openContactsModal={openContactsModal}/>
                     <PortfolioSection navRef={portfolioRef} isShow={activeId >= 1}/>
                     <EducationSection navRef={educationRef} isShow={activeId >= 2}/>
                     <WorkSection navRef={workRef} isShow={activeId >= 3}/>
                     <DiplomasSections isShow={activeId >= 3}/>
+                    <Footer/>
                     <GlobalStyle/>
                     <StarsSky/>
                     <SelectLanguage/>
@@ -113,7 +116,6 @@ const AppWrapper = styled.div`
   position: relative;
   color: ${({theme}) => theme.colors.textPrimary};
   background-color: ${({theme}) => theme.colors.backgroundPrimary};
-  padding-bottom: 70px;
 `;
 
 

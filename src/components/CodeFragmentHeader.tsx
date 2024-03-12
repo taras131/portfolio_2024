@@ -10,7 +10,7 @@ interface IProps {
 export const CodeFragmentHeader: FC<IProps> = memo(({activeFile, changeActiveFile}) => {
     const fileList = fileNames.map(fileName => {
         return (
-            <FileBox isActive={fileName === activeFile}
+            <FileBox isactive={fileName === activeFile}
                      key={fileName}
                      onClick={changeActiveFile(fileName)}>
                 {fileName}
@@ -36,7 +36,7 @@ const Wrapper = styled.div`
 `;
 
 interface IFileBoxProps {
-    isActive?: boolean
+    isactive?: boolean
 }
 
 const FileBox = styled.div<IFileBoxProps>`
@@ -47,18 +47,16 @@ const FileBox = styled.div<IFileBoxProps>`
     gap: 3px;
     padding-left: 5px;
     padding-right: 5px;
-    background-color: ${props => props.isActive ? "#4d4a4a" : "#3F3D3DFF"};
+    background-color: ${props => props.isactive ? "#4d4a4a" : "#3F3D3DFF"};
     border-right: 1px solid #3F3D3DFF;
     cursor: default;
  
-    ${props => !props.isActive && css `
+    ${props => !props.isactive && css `
         &:hover {
             background-color: #313030;
         }
     `}
-
-  
-
+    
     span {
         transform: rotate(-45deg);
     }

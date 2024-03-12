@@ -1,15 +1,19 @@
 import portfolio_1 from "../assets/img/portfolio_1.jpg"
-import supply_1 from "../assets/img/supply_1.bmp"
+import supply_1 from "../assets/img/supply_1.jpg"
 import supply_2 from "../assets/img/supply_2.jpg"
 import supply_3 from "../assets/img/supply_3.jpg"
+import supply_4 from "../assets/img/supply_4.jpg"
 import troubleshooting_1 from "../assets/img/troubleshooting_1.jpg"
 import troubleshooting_2 from "../assets/img/troubleshooting_2.jpg"
-import burger_1 from "../assets/img/burger_1.bmp"
-import burger_2 from "../assets/img/burger_2.bmp"
-import burger_3 from "../assets/img/burger_3.bmp"
-import flower_1 from "../assets/img/shop_1.jpg"
-import flower_2 from "../assets/img/shop_2.jpg"
-import flower_3 from "../assets/img/shop_3.jpg"
+import troubleshooting_3 from "../assets/img/troubleshooting_3.jpg"
+import troubleshooting_4 from "../assets/img/troubleshooting_4.jpg"
+import burger_1 from "../assets/img/burger_1.jpg"
+import burger_2 from "../assets/img/burger_2.jpg"
+import burger_3 from "../assets/img/burger_3.jpg"
+import burger_4 from "../assets/img/burger_4.jpg"
+import shop_0 from "../assets/img/shop_0.jpg"
+import shop_2 from "../assets/img/shop_2.jpg"
+import shop_3 from "../assets/img/shop_3.jpg"
 import home from "../assets/icons/home.png"
 import portfolio from "../assets/icons/portfolio.png"
 import education from "../assets/icons/education.png"
@@ -42,10 +46,10 @@ export const works: IWork [] = [
         achievements: {
             en: "This job taught me how to create complex data structures and work with them. And also use the Material" +
                 " UI library in practice to create a user interface.",
-            ru: "Эта работа научила меня создавать сложные структуры данных и работать с ними. А так же использовать " +
+            ru: "Эта работа научила меня создавать сложные структуры данных и работать с ними. Так же использовать " +
                 "на практике библиотеку Material UI для создания user interface."
         },
-        img: [troubleshooting_1, troubleshooting_2],
+        img: [troubleshooting_1, troubleshooting_2, troubleshooting_3, troubleshooting_4],
         skills: ["React", "Typescript", "Redux", "Toolkit", "Material UI"],
         git: "https://github.com/taras131/mechanics_guide",
         webSite: "https://deluxe-torte-cdf6c9.netlify.app/guides"
@@ -58,18 +62,18 @@ export const works: IWork [] = [
                 " spare parts. It allows you to trace the entire history: the creation of an application, payment of an" +
                 " invoice, shipment of spare parts by a transport company and their arrival at the warehouse.",
             ru: "Приложение для моего текущего места работы. Предназначено для контроля выполнения заявок на запчасти. " +
-                "Позволяет проследить всё историю: создания заявки, оплату счёта, отгрузку " +
-                "запчастей транспортной компанией и приход их на склад."
+                "Позволяет проследить всё историю: от создания заявки и оплаты счёта до отгрузки " +
+                "запчастей транспортной компанией и прихода их на склад."
         },
         achievements: {
             en: "By creating this application, I learned how to work with firebase, read information from pdf files to" +
                 " automatically link payment orders to accounts, and make requests by VIN number to third-party services." +
                 "Based on feedback from users, the functionality is constantly being refined and expanded.",
-            ru: "Создавая это приложение я научился работать с firebase, считывать информацию из pdf файлов для " +
+            ru: "Создавая это приложение, я научился работать с firebase, считывать данные из pdf файлов для " +
                 "автоматической привязки платёжных поручений к счетам, делать запросы по VIN номеру на сторонние сервисы." +
                 "На основе обратной связи от пользователей, происходит постоянная доработка и расширение функционала."
         },
-        img: [supply_2, supply_3],
+        img: [supply_1, supply_2, supply_3, supply_4],
         skills: ["React", "Typescript", "Redux", "Toolkit", "Material UI"],
         git: "https://github.com/taras131/supply_0.7"
     },
@@ -80,7 +84,7 @@ export const works: IWork [] = [
             en: "This application is an online burger store where the customer can, using Drag and Drop, assemble a " +
                 "burger for himself in the designer. The order history and ingredient cards are also available for viewing.",
             ru: "Это приложение представляет из себя интернет магазин по продаже бургеров, где клиент может, " +
-                "используя Drag and Drop, сам собрать себе бургер в конструкторе. Так же доступна к просмоту история " +
+                "используя Drag and Drop, сам собрать себе бургер в конструкторе. Также доступна к просмоту история " +
                 "заказов и карточки ингридиентов."
         },
         achievements: {
@@ -89,7 +93,7 @@ export const works: IWork [] = [
                 "authentication of the user based on the token.",
             ru: "Работая над этим приложением я освоил Redux Toolkit, технологию работы с Drag and Drop событиями. " +
                 "Ещё можно отметить вынос запросов на сервер в отдельный слой и аутенфикацию пользователя на основе token."
-        }, img: [burger_1, burger_2, burger_3],
+        }, img: [burger_1, burger_2, burger_3, burger_4],
         skills: ["React", "Typescript", "Redux", "Toolkit", "JavaScript", "Drag and Drop"],
         git: "https://github.com/taras131/react-burger",
         webSite: "https://taras131.github.io/react-burger/"
@@ -105,14 +109,15 @@ export const works: IWork [] = [
             ru: "Это универсальный сервер для интернет магазина, который позволяет пользователю добавлять товары в" +
                 " корзину, оформлять заказы, просматривать историю своих заказов. Администратор может добавлять, удалять" +
                 " товар, изменять цены, ставить отметку 'нет на складе' и ведеть список всех сделанных заказов. " +
-                "Для взаимодействия с сервером был сделан шаблон цветочного магазина на React."
+                "Для взаимодействия с сервером был сделан шаблон цветочного магазина на React, цель которого ещё была в том," +
+                "чтобы научиться работать с MobX."
         },
         achievements: {
             en: "When writing this server, I mastered the Express library and learned how to create a database using " +
                 "Sequelize. Which allowed me to look at the development from a new perspective, from the backend side.",
             ru: "При написании данного сервера я освоил  библиотеку Express и научился создавать базу данных с помощью " +
                 "Sequelize. Что позволило мне посмотреть на разработку с новой стороны, - со стороны бекенда."
-        }, img: [flower_1, flower_2, flower_3],
+        }, img: [shop_0, shop_2, shop_3],
         skills: ["React", "Redux", "Node js", "Express", "Jsonwebtoken", "Sequelize", "MobX"],
         git: "https://github.com/taras131/flowers_shop_0.2/tree/main/server"
     },
@@ -131,13 +136,13 @@ export const works: IWork [] = [
             ru: "Я получил навыки работы с библиотекой Styled Components, посмотрел на её плюсы и минусы и " +
                 "потренировался в создании несложных анимаций."
         }, img: [portfolio_1],
-        skills: ["React", "Styled Components","JavaScript"],
+        skills: ["React", "Styled Components", "JavaScript"],
         git: "https://github.com/taras131/portfolio_2024"
     },
 ]
 
 export const skills = ["React", "Typescript", "Redux", "Toolkit", "MobX", "Styled Component", "Material UI", "SCSS",
-    "Node js", "Express","JavaScript", "HTML", "CSS", "Git", "Jira", "Slack"]
+    "Node js", "Express", "JavaScript", "HTML", "CSS", "Git", "Jira", "Slack"]
 
 export const educationHistory: IHistory [] = [
     {
@@ -153,9 +158,9 @@ export const educationHistory: IHistory [] = [
                     " An invaluable part of this course is the presence of a community passionate about development:" +
                     " both instructors and students are always eager to discuss new ideas.",
                 ru: "Этот курс нужен мне для углубления понимания принципов работы React приложений. Он позволит мне создавать" +
-                    " более эффективные и оптимизированные приложения. Так же ,благодаря ему я освоиваю актуальные инструменты разработки " +
+                    " более эффективные и оптимизированные приложения. Благодаря ему, я освоиваю актуальные инструменты разработки " +
                     "и учусь тонкостям работы с typescript. Безсценной частью этого курса является наличие  комьюнити, " +
-                    "которое увлечено разработкой: и преподаватели и студенты всегда с интересом готовы обсудить новые идеи."
+                    "которое увлечено разработкой: и преподаватели, и студенты всегда с интересом готовы обсудить новые идеи."
             },
         dateStart: {en: "Dec 2022", ru: "Дек 2022"},
         dateFinish: {en: "Today", ru: "В процессе"},

@@ -18,11 +18,10 @@ export const GlobalStyle = createGlobalStyle`
     monospace;
   }
 
-  *, *:after, *:before {
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    line-height: 120%;
   }
 
   ul {
@@ -37,7 +36,8 @@ export const GlobalStyle = createGlobalStyle`
 
   h2 {
     font-size: calc((100vw - 410px) / (1280 - 410) * (32 - 24) + 24px);
-    z-index: 100;
+    z-index: 200;
+    position: relative;
   }
   
 `

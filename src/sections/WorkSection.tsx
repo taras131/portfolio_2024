@@ -2,7 +2,7 @@ import React, {FC, RefObject, useContext} from 'react';
 import styled from "styled-components";
 import {HistoryList} from "../components/HistoreList";
 import {workHistory} from "../utils/consts";
-import {LanguageContext, languages} from "../components/LanguageContext";
+import {LanguageContext, languages} from "../contexts/LanguageContext";
 
 interface IProps {
     isShow: boolean

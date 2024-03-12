@@ -1,6 +1,4 @@
 import React, {FC, memo} from 'react';
-import {Tag} from "./Tag";
-import {CodeLine} from "./CodeLine";
 import styled from "styled-components";
 
 interface IProps {
