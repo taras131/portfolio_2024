@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {CodeFragmentFunction} from "./CodeFragmentFunction";
 import {Tag} from "./Tag";
 import {CodeLine} from "./CodeLine";
 
-export const CodeFragmentFileCodeLine = () => {
+export const CodeFragmentFileCodeLine = memo(() => {
     return (
         <CodeFragmentFunction functionName={"CodeLine"}>
             <Tag name={"Line"} tabCount={2} isNewLine/>
@@ -13,5 +13,5 @@ export const CodeFragmentFileCodeLine = () => {
             <Tag name={"Wrapper"} type={"close"} tabCount={2} isNewLine/>
         </CodeFragmentFunction>
     );
-};
+});
 

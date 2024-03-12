@@ -1,36 +1,58 @@
-import React, {FC} from 'react';
+import React, {FC, memo} from 'react';
 import styled, {keyframes} from "styled-components";
 
 interface IProps {
     title: string,
-    isActive?: boolean
+    index: number
 }
 
-export const SkillItem: FC<IProps> = ({title, isActive = false}) => {
+export const SkillItem: FC<IProps> = memo(({title, index}) => {
     return (
-        <Wrapper>
-            <h3>{title}</h3>
+        <Wrapper index={index}>
+            <span>{title}</span>
         </Wrapper>
     );
-};
+});
 
+const animation = keyframes`
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  75% {
+    transform: translateY(-25%);
+    opacity: .75;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`
 
-const Wrapper = styled.li`
-    padding: 10px;
-    color: #4286f4;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    background-color: #020b13;
+interface IWrapperProps {
+    index: number
+}
+
+const Wrapper = styled.li<IWrapperProps>`
+  z-index: 100;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  animation: ${animation} .6s ease;
+  animation-delay: ${props => props.index * .2 + "s"};
+  animation-fill-mode: forwards;
+  opacity: 0;
+  border-radius: 8px;
+  background-color: rgba(26, 28, 40, .6);
+  padding: 0 10px;
+
+  span {
+    font-size: 16px;
+    color: white;
     transition: .4s;
 
-    &:hover {
-        outline: 1px solid #4286f4;
-        color: ${({theme}) => theme.colors.textSecondary};
-        box-shadow: 0 0 20px #00b3ff, 0 0 35px #4286f4, 0 0 50px #39b3e3;
-    }
+  }
 `;
 

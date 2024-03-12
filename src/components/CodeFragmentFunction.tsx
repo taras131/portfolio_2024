@@ -1,6 +1,4 @@
-import React, {FC} from 'react';
-import {Tag} from "./Tag";
-import {CodeLine} from "./CodeLine";
+import React, {FC, memo} from 'react';
 import styled from "styled-components";
 
 interface IProps {
@@ -8,7 +6,7 @@ interface IProps {
     children: React.ReactNode,
 }
 
-export const CodeFragmentFunction: FC<IProps> = ({functionName, children}) => {
+export const CodeFragmentFunction: FC<IProps> = memo(({functionName, children}) => {
     return (
         <>
             <OrangeSpan tab={0}>export const </OrangeSpan>
@@ -23,7 +21,7 @@ export const CodeFragmentFunction: FC<IProps> = ({functionName, children}) => {
             <span>&#125;;</span>
         </>
     );
-};
+});
 
 interface ISpan {
     tab: number

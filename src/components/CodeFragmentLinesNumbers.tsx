@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {memo} from 'react';
 import styled from "styled-components";
 
-export const CodeFragmentLinesNumbers = () => {
+export const CodeFragmentLinesNumbers = memo(() => {
     let numberArr = []
     for (let i = 1; i < 15; i++) {
         numberArr.push(i)
@@ -12,15 +12,13 @@ export const CodeFragmentLinesNumbers = () => {
             {numbersList}
         </Wrapper>
     );
-};
+});
 
 const Wrapper = styled.div`
-  
   background-color: #3F3D3DFF;
   width: 25px;
   padding-left: 3px;
-
-
+  
   span {
     display: block;
     font-size: 11px;

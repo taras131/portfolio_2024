@@ -1,40 +1,35 @@
 import styled, {keyframes} from "styled-components";
-import React, {FC} from 'react';
-import {CodeFragment} from "./CodeFragment";
-import Tilt from "react-parallax-tilt";
+import React, {FC, memo} from 'react';
 
 interface IProps {
     children: React.ReactNode
 }
 
-export const LaptopImitation: FC<IProps> = ({children}) => {
+export const LaptopImitation: FC<IProps> = memo(({children}) => {
     return (
-        <Tilt  className="parallax-effect-glare-scale"
-               perspective={2000}
-               glareEnable={true}
-               glareMaxOpacity={1}
-               scale={1.01}
-        >
-            <Wrapper>
-                {children}
-                <Camera/>
-                <Body/>
-                <CardRider/>
-                <Indications>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </Indications>
-            </Wrapper>
-        </Tilt>
+        <Wrapper>
+            {children}
+            <Camera/>
+            <Body/>
+            <CardRider/>
+            <Indications>
+                <li></li>
+                <li></li>
+                <li></li>
+            </Indications>
+        </Wrapper>
     );
-};
+});
 
 const Wrapper = styled.div`
   border-radius: 8px;
   border: 20px solid #252323FF;
   position: relative;
-  
+  z-index: 100;
+  @media screen and (min-width: 1300px) {
+    transform: scale(1.3) translateX(-15%);
+    
+  }
 `;
 
 const Camera = styled.div`
@@ -87,7 +82,8 @@ const Indications = styled.ul`
   display: flex;
   align-items: center;
   gap: 10px;
-z-index: 100;
+  z-index: 100;
+
   li {
     height: 5px;
     width: 5px;

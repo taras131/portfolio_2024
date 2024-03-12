@@ -1,23 +1,24 @@
-import React, {useState} from 'react';
+import React, {FC, useContext} from 'react';
 import styled, {css, keyframes} from "styled-components";
+import {navigation} from "../utils/consts";
+import {LanguageContext} from "../contexts/LanguageContext";
 
-export const Navigation = () => {
-    const [activeNavItem, setActiveNavItem] = useState("About Me")
-    const handleNavItemClick = (activeItem: string) => () => {
-        setActiveNavItem(activeItem)
-    }
+interface IProps {
+    activeId: number
+    handleNavItemClick: (id: number) => () => void
+}
+
+export const Navigation: FC<IProps> = ({activeId, handleNavItemClick}) => {
+    const {language} = useContext(LanguageContext);
+    const linkList = navigation.map(nav => (
+        <NavItem key={nav.id} onClick={handleNavItemClick(nav.id)} isactive={activeId === nav.id}>
+            <span>{nav.title[language]}</span>
+            <img src={nav.icon} alt={nav.title[language]}/>
+        </NavItem>))
     return (
         <NavWrapper>
             <ul>
-                <NavItem onClick={handleNavItemClick("About Me")} isActive={activeNavItem === "About Me"}>
-                    <a href="#"> About Me</a>
-                </NavItem>
-                <NavItem onClick={handleNavItemClick("Works")} isActive={activeNavItem === "Works"}>
-                    <a href="#">Works</a>
-                </NavItem>
-                <NavItem onClick={handleNavItemClick("Education")} isActive={activeNavItem === "Education"}>
-                    <a href="#">Education</a>
-                </NavItem>
+                {linkList}
             </ul>
         </NavWrapper>
     );
@@ -36,10 +37,10 @@ const NavWrapper = styled.nav`
 `;
 
 interface INavItem {
-    isActive: boolean
+    isactive: boolean
 }
 
-const itemAnimation = keyframes`
+export const itemAnimation = keyframes`
   0% {
     width: 4px;
     opacity: 0;
@@ -58,20 +59,19 @@ const NavItem = styled.li<INavItem>`
   font-size: 20px;
   transition: .4s;
   position: relative;
+  color: ${({theme}) => theme.colors.textSecondary};
+  cursor: pointer;
 
-  a {
-    color: ${({theme}) => theme.colors.textSecondary};
+  &:hover {
+    color: ${({theme}) => theme.colors.textPrimary};
   }
-
-  ${props => props.isActive && css<INavItem>`
+  
+  ${props => props.isactive && css<INavItem>`
     transition: .4s;
-
-    a {
-      color: ${({theme}) => theme.colors.textPrimary};
-      font-weight: 600;
-    }
-
-    *::after {
+    color: ${({theme}) => theme.colors.textPrimary};
+    font-weight: 600;
+    text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 8px #007bff, 0 0 12px #007bff, 0 0 16px #007bff, 0 0 20px #007bff, 0 0 25px #007bff;
+    &::after {
       content: "";
       display: block;
       background-color: ${({theme}) => theme.colors.textPrimary};
@@ -84,6 +84,19 @@ const NavItem = styled.li<INavItem>`
       animation: ${itemAnimation} .4s linear;
     }
   `}
+  & > img {
+    width: 24px;
+    height: 24px;
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  & > span {
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
 `;
 
 

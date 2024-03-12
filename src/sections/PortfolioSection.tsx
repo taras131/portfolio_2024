@@ -1,97 +1,89 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {SkillItem} from "../components/SkillItem";
-import styled from "styled-components";
-import {WorkItem} from "../components/WorkItem";
+import React, {FC, RefObject, useCallback, useEffect, useState} from 'react';
+import styled, {css} from "styled-components";
 import {works} from "../utils/consts";
+import {PortfolioWorkHeader} from "../components/PortfolioWorkHeader";
+import {Slider} from "../components/Slider";
+import {PortfolioDescription} from "../components/PortfolioDescription";
+import {Paginator} from "../components/Paginator";
 
-const skills = ["React", "Typescript", "Javascript", "HTML", "SCSS", "Styled Component", "Material UI", "Node JS"]
+interface IProps {
+    navRef: RefObject<HTMLHeadingElement>
+    isShow: boolean
+}
 
-
-export const PortfolioSection = () => {
+export const PortfolioSection: FC<IProps> = ({navRef, isShow}) => {
     const [activeWorkId, setActiveWorkId] = useState(0)
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-    const [offset, setOffset] = useState(screenWidth / 2 - 410)
-    const [slideWidth, setSlideWidth] = useState(600)
-    const skillsList = skills.map(skill => (<SkillItem key={skill} title={skill}/>))
+    const [windowWidth, setWindowWidth] = useState(Math.round(window.innerWidth));
+    const [activeSlideItemWidth, setActiveSlideItemWidth] = useState(0);
+    const [standardSlideItemWidth, setStandardSlideItemWidth] = useState(0);
     useEffect(() => {
-        const handleResize = () => {
-            setScreenWidth(window.innerWidth);
+        const calculateWidths = () => {
+            let newActiveSlideItemWidth = Math.round(windowWidth * 0.7);
+            if (windowWidth > 1340) newActiveSlideItemWidth = Math.round(windowWidth * 0.45);
+            if (windowWidth < 768) newActiveSlideItemWidth = Math.round(windowWidth * 0.8);
+            setActiveSlideItemWidth(newActiveSlideItemWidth);
+            setStandardSlideItemWidth(Math.round(newActiveSlideItemWidth * 0.6));
         };
-
+        calculateWidths();
+        const handleResize = () => {
+            setWindowWidth(Math.round(window.innerWidth));
+        };
         window.addEventListener('resize', handleResize);
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
-    console.log('Ширина экрана:', screenWidth);
-    useEffect(() => {
-        setOffset(screenWidth / 2 - 320 - 600 * activeWorkId)
-    }, [activeWorkId, screenWidth, slideWidth]);
-    useEffect(() => {
-        if(screenWidth < 800) {
-            setSlideWidth(500)
-        }
-    }, [screenWidth]);
-    const changeActiveWork = useCallback((id: number) => () => {
-        setActiveWorkId(id);
-    }, [setActiveWorkId]);
-    const portfolioList = works.map(work => (<WorkItem key={work.id}
-                                                       work={work}
-                                                       isActive={activeWorkId === work.id}
-                                                       activeWorkId={activeWorkId}
-                                                       handleWorkClick={changeActiveWork(work.id)}
-                                                       slideWidth={slideWidth}/>))
+    }, [windowWidth]);
+    const startingMargin = Math.round((windowWidth - activeSlideItemWidth) / 2);
+    const paginationArr = works.map(work => work.id)
+    const activeWork = works.filter(work => work.id === activeWorkId)[0]
+    const handlePrevWorkClick = useCallback(() => {
+        setActiveWorkId(prev => prev > 0 ? prev - 1 : prev)
+    }, [setActiveWorkId])
+    const handleNextWorkClick = useCallback(() => {
+        setActiveWorkId(prev => prev < works.length - 1 ? prev + 1 : prev)
+    }, [setActiveWorkId])
+    const handleSetActiveWorkId = useCallback((id: number) => () => {
+        if (id >= 0 && id < works.length) setActiveWorkId(id)
+    }, [setActiveWorkId])
     return (
-        <Wrapper>
-            <h2>Portfolio:</h2>
-            <SkillList>
-                {skillsList}
-            </SkillList>
-            <PortfolioSlider>
-                <SlidesBox offsetLeft={offset}>
-                    {portfolioList}
-                </SlidesBox>
-            </PortfolioSlider>
+        <Wrapper ref={navRef}>
+            <PortfolioWorkHeader title={activeWork.title}/>
+            <Slider activeWorkId={activeWorkId}
+                    handlePrevWorkClick={handlePrevWorkClick}
+                    handleNextWorkClick={handleNextWorkClick}
+                    startingMargin={startingMargin}
+                    activeSlideItemWidth={activeSlideItemWidth}
+                    standardSlideItemWidth={standardSlideItemWidth}
+                    handleSetActiveWorkId={handleSetActiveWorkId}
+            />
+            <PaginatorWrapper>
+                <Paginator paginationArr={paginationArr}
+                           activeId={activeWorkId}
+                           handleSetActiveId={handleSetActiveWorkId}/>
+            </PaginatorWrapper>
+            <PortfolioDescription description={activeWork.description}
+                                  achievements={activeWork.achievements}
+                                  skills={activeWork.skills}
+                                  isShow={isShow}
+                                  gitLink={activeWork.git}
+                                  webLink={activeWork.webSite}/>
         </Wrapper>
     );
 };
 
 const Wrapper = styled.section`
-    margin-top: 30px;
-    padding: 0 5px 60px 5px;
-
-    h2 {
-        font-size: 36px;
-    }
+  z-index: 200;
+  padding-top: 60px;
 `;
 
-const SkillList = styled.ul`
-    margin-top: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-`;
+const PaginatorWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+`
 
-const PortfolioSlider = styled.div`
-    margin-top: 40px;
-    overflow: hidden;
-
-`;
-
-interface ISlidesBoxProps {
-    offsetLeft: number
-}
-
-const SlidesBox = styled.div<ISlidesBoxProps>`
-    display: flex;
-    height: 600px;
-    width: 100%;
-    align-items: center;
-    transition: .5s;
-    transform: translateX(${props => props.offsetLeft + "px"});
-`;
 
 
 
